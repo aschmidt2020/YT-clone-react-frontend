@@ -12,9 +12,14 @@ const VideoPlayer = (props) => {
         <div>
             <iframe id="ytplayer" type="text/html" width="640" height="360"
             src={videoURL} frameBorder="0"></iframe>
-            <h3>{props.video.snippet.title}</h3>
-            <p>{props.video.snippet.description}</p>
-            
+            {'snippet' in props.video 
+                ? <h3>{props.video.snippet.title}</h3>
+                : <h3>NO SNIPPED AVAILABLE</h3>
+                }
+            {'snippet' in props.video 
+                ? <p>{props.video.snippet.description}</p>
+                : <p>NO SNIPPED AVAILABLE</p>
+                }
         </div>
     );
    

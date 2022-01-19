@@ -18,8 +18,9 @@ const RelatedVideos = (props) => {
                 return (
             <tr key={result.id.videoId}>
                 <td>{index + 1}</td>
-                {'snippet' in result &&
-                <td>{result.snippet.title}</td>}
+                {'snippet' in result 
+                    ? <td>{result.snippet.title}</td>
+                    : <td>NO SNIPPET AVAILABLE</td>}
                 <td></td>
                 <td><button onClick={() => props.getVideo(result)}>Watch</button></td>
             </tr>

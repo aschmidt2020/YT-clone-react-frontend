@@ -22,7 +22,7 @@ function App() {
     setVideo(response.data.items[0]);
     getPlaylist(response.data.items[0]);
   }
-  
+
   async function getPlaylist(video){
     let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=${video.id.videoId}&type=video&key=AIzaSyDhl3itYChmaGsjhSxnnZ7gy6m6VFYjk4g`);
     debugger
@@ -55,7 +55,7 @@ function App() {
    
            <div className='row' style={{'marginTop':'1em','textAlign':'center'}}>
                <VideoPlayer video={video}/>
-               <RelatedVideos playlist={playlist.items} />
+               <RelatedVideos playlist={playlist.items} getVideo={getVideo}/>
            </div>
    
            <div className='row'>
