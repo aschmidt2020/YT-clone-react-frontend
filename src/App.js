@@ -141,24 +141,19 @@ function App() {
     }
   )
 
-  useEffect(() => {
-    async function initialSearch() {
-      const response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=coding&key=AIzaSyA4kqUjPygvGiu6-LnTwdWwiHUWvqqJAv0`);
-      setSearchResults(response.data);
-    }
-  }, [])
+  // useEffect(() => {
+  //   async function initialSearch() {
+  //     const response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=coding&key=AIzaSyA4kqUjPygvGiu6-LnTwdWwiHUWvqqJAv0`);
+  //     setSearchResults(response.data);
+  //   }
+  // }, [])
 
 
-  useEffect(() => {
-    debugger
-    async function getPlaylist() {
-      const response = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${video.id.videoId}&type=video&key=AIzaSyA4kqUjPygvGiu6-LnTwdWwiHUWvqqJAv0`);
-      console.log(response)
-      setPlaylist(response.data);
-    }
-  }, [video])
-
-
+  async function getPlaylist(video){
+    let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${video.id.videoId}&type=video&key=AIzaSyA4kqUjPygvGiu6-LnTwdWwiHUWvqqJAv0`);
+    console.log(response)
+    setPlaylist(response.data);
+  }
 
   async function universalSearch(searchTerm){
     let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${searchTerm}&key=AIzaSyA4kqUjPygvGiu6-LnTwdWwiHUWvqqJAv0`);
@@ -171,7 +166,8 @@ function App() {
   function getVideo(video){
     debugger
     //console.log(videoID);
-    setVideo(video)
+    setVideo(video);
+    getPlaylist(video)
    }
 
   return (
