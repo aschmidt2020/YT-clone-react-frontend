@@ -6,7 +6,7 @@ import SearchResults from './Components/SearchResults/SearchResults';
 import VideoPlayer from "./Components/VideoPlayer/VideoPlayer";
 
 function App() {
-  const [video, setVideo] = useState('');
+  const [video, setVideo] = useState(undefined);
     // {
     //     "kind": "youtube#searchResult",
     //       "etag": "okmftF2A9o616QREoohKV3RbkK4",
@@ -42,7 +42,7 @@ function App() {
     //       }
     //     },
   
-  const [searchResults, setSearchResults] = useState('');
+  const [searchResults, setSearchResults] = useState(undefined);
     // {
     //   "kind": "youtube#searchListResponse",
     //   "etag": "_JgZYPf56gSXVmDsvh53MYWUZT8",
@@ -91,7 +91,7 @@ function App() {
     // }
     
 
-  const [playlist, setPlaylist] = useState('');
+  const [playlist, setPlaylist] = useState(undefined);
     // {
     //   "kind": "youtube#searchListResponse",
     //   "etag": "_JgZYPf56gSXVmDsvh53MYWUZT8",
@@ -142,16 +142,18 @@ function App() {
 
   useEffect(() => {
     debugger
-    async function initialSearch() {
-      const response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=coding&key=AIzaSyDhl3itYChmaGsjhSxnnZ7gy6m6VFYjk4g`);
-      
-      debugger
-      setSearchResults(response.data);
-      setVideo(response.data.items[0]);
-    }
+    pageLoad();
   }, [])
 
 
+  async function pageLoad() {
+    let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=coding&key=AIzaSyDhl3itYChmaGsjhSxnnZ7gy6m6VFYjk4g`);
+    debugger
+    setSearchResults(response.data);
+    setVideo(response.data.items[0]);
+    getPlaylist(response.data.items[0]);
+
+  }
   async function getPlaylist(video){
     let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=${video.id.videoId}&type=video&key=AIzaSyDhl3itYChmaGsjhSxnnZ7gy6m6VFYjk4g`);
     debugger
@@ -174,26 +176,33 @@ function App() {
 
    }
 
+   if(video != undefined && playlist != undefined && searchResults != undefined){
+     return (
+       <div>
+         <div className='container'>
+           <div className='row' style={{'marginTop':'2em','textAlign':'center'}}>
+             <SearchBar universalSearch={universalSearch}/>
+           </div>
+   
+           <div className='row' style={{'marginTop':'1em','textAlign':'center'}}>
+               <VideoPlayer video={video}/>
+               <RelatedVideos playlist={playlist.items} />
+           </div>
+   
+           <div className='row'>
+               <SearchResults searchResults={searchResults.items} getVideo={getVideo}/>
+           </div>
+   
+         </div>
+       </div>
+     )
+   }
 
-    return (
-      <div>
-        <div className='container'>
-          <div className='row' style={{'marginTop':'2em','textAlign':'center'}}>
-            <SearchBar universalSearch={universalSearch}/>
-          </div>
-  
-          <div className='row' style={{'marginTop':'1em','textAlign':'center'}}>
-              <VideoPlayer video={video}/>
-              <RelatedVideos playlist={playlist.items} />
-          </div>
-  
-          <div className='row'>
-              <SearchResults searchResults={searchResults.items} getVideo={getVideo}/>
-          </div>
-  
-        </div>
-      </div>
-    )
+   else {
+     return (
+       <p>Loading</p>
+     )
+   }
    
 }
 
