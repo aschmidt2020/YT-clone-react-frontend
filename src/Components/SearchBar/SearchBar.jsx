@@ -6,6 +6,7 @@ const SearchBar = (props) => {
 
     function handleSubmit(event){
         event.preventDefault();
+        //debugger
         props.universalSearch(searchTerm);
         setSearchTerm(''); //resets form
 

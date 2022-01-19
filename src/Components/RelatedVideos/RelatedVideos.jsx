@@ -19,7 +19,7 @@ const RelatedVideos = (props) => {
             <tr key={result.id.videoId}>
                 <td>{index + 1}</td>
                 <td>{result.snippet.title}</td>
-                <td>{result.snippet.description}</td>
+                <td></td>
                 <td><button onClick={() => props.getVideo(result)}>Watch</button></td>
             </tr>
                     
