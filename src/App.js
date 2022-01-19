@@ -7,144 +7,13 @@ import VideoPlayer from "./Components/VideoPlayer/VideoPlayer";
 
 function App() {
   const [video, setVideo] = useState(undefined);
-    // {
-    //     "kind": "youtube#searchResult",
-    //       "etag": "okmftF2A9o616QREoohKV3RbkK4",
-    //       "id": {
-    //         "kind": "youtube#video",
-    //         "videoId": "I-k-iTUMQAY"
-    //       },
-    //       "snippet": {
-    //         "publishedAt": "2020-05-30T17:00:07Z",
-    //         "channelId": "UCgqGpYjhnWvhE5-QrmXLkoQ",
-    //         "title": "basics of CODING in 10 minutes",
-    //         "description": "Hey Guys! Thought I'd switch it up and give you some CS instead of Philosophy today (woop woop to a Joint Honours Degree!)",
-    //         "thumbnails": {
-    //           "default": {
-    //             "url": "https://i.ytimg.com/vi/I-k-iTUMQAY/default.jpg",
-    //             "width": 120,
-    //             "height": 90
-    //           },
-    //           "medium": {
-    //             "url": "https://i.ytimg.com/vi/I-k-iTUMQAY/mqdefault.jpg",
-    //             "width": 320,
-    //             "height": 180
-    //           },
-    //           "high": {
-    //             "url": "https://i.ytimg.com/vi/I-k-iTUMQAY/hqdefault.jpg",
-    //             "width": 480,
-    //             "height": 360
-    //           }
-    //         },
-    //         "channelTitle": "The StudyTube Project",
-    //         "liveBroadcastContent": "none",
-    //         "publishTime": "2020-05-30T17:00:07Z"
-    //       }
-    //     },
-  
   const [searchResults, setSearchResults] = useState(undefined);
-    // {
-    //   "kind": "youtube#searchListResponse",
-    //   "etag": "_JgZYPf56gSXVmDsvh53MYWUZT8",
-    //   "nextPageToken": "CAUQAA",
-    //   "regionCode": "US",
-    //   "pageInfo": {
-    //     "totalResults": 1000000,
-    //     "resultsPerPage": 5
-    //   },
-    //   "items": [
-    //     {
-    //       "kind": "youtube#searchResult",
-    //       "etag": "okmftF2A9o616QREoohKV3RbkK4",
-    //       "id": {
-    //         "kind": "youtube#video",
-    //         "videoId": "I-k-iTUMQAY"
-    //       },
-    //       "snippet": {
-    //         "publishedAt": "2020-05-30T17:00:07Z",
-    //         "channelId": "UCgqGpYjhnWvhE5-QrmXLkoQ",
-    //         "title": "basics of CODING in 10 minutes",
-    //         "description": "Hey Guys! Thought I'd switch it up and give you some CS instead of Philosophy today (woop woop to a Joint Honours Degree!)",
-    //         "thumbnails": {
-    //           "default": {
-    //             "url": "https://i.ytimg.com/vi/I-k-iTUMQAY/default.jpg",
-    //             "width": 120,
-    //             "height": 90
-    //           },
-    //           "medium": {
-    //             "url": "https://i.ytimg.com/vi/I-k-iTUMQAY/mqdefault.jpg",
-    //             "width": 320,
-    //             "height": 180
-    //           },
-    //           "high": {
-    //             "url": "https://i.ytimg.com/vi/I-k-iTUMQAY/hqdefault.jpg",
-    //             "width": 480,
-    //             "height": 360
-    //           }
-    //         },
-    //         "channelTitle": "The StudyTube Project",
-    //         "liveBroadcastContent": "none",
-    //         "publishTime": "2020-05-30T17:00:07Z"
-    //       }
-    //     },
-    //   ]
-    // }
-    
-
   const [playlist, setPlaylist] = useState(undefined);
-    // {
-    //   "kind": "youtube#searchListResponse",
-    //   "etag": "_JgZYPf56gSXVmDsvh53MYWUZT8",
-    //   "nextPageToken": "CAUQAA",
-    //   "regionCode": "US",
-    //   "pageInfo": {
-    //     "totalResults": 1000000,
-    //     "resultsPerPage": 5
-    //   },
-    //   "items": [
-    //     {
-    //       "kind": "youtube#searchResult",
-    //       "etag": "okmftF2A9o616QREoohKV3RbkK4",
-    //       "id": {
-    //         "kind": "youtube#video",
-    //         "videoId": "I-k-iTUMQAY"
-    //       },
-    //       "snippet": {
-    //         "publishedAt": "2020-05-30T17:00:07Z",
-    //         "channelId": "UCgqGpYjhnWvhE5-QrmXLkoQ",
-    //         "title": "basics of CODING in 10 minutes",
-    //         "description": "Hey Guys! Thought I'd switch it up and give you some CS instead of Philosophy today (woop woop to a Joint Honours Degree!)",
-    //         "thumbnails": {
-    //           "default": {
-    //             "url": "https://i.ytimg.com/vi/I-k-iTUMQAY/default.jpg",
-    //             "width": 120,
-    //             "height": 90
-    //           },
-    //           "medium": {
-    //             "url": "https://i.ytimg.com/vi/I-k-iTUMQAY/mqdefault.jpg",
-    //             "width": 320,
-    //             "height": 180
-    //           },
-    //           "high": {
-    //             "url": "https://i.ytimg.com/vi/I-k-iTUMQAY/hqdefault.jpg",
-    //             "width": 480,
-    //             "height": 360
-    //           }
-    //         },
-    //         "channelTitle": "The StudyTube Project",
-    //         "liveBroadcastContent": "none",
-    //         "publishTime": "2020-05-30T17:00:07Z"
-    //       }
-    //     },
-    //   ]
-    // }
-
 
   useEffect(() => {
     debugger
     pageLoad();
   }, [])
-
 
   async function pageLoad() {
     let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=coding&key=AIzaSyDhl3itYChmaGsjhSxnnZ7gy6m6VFYjk4g`);
@@ -152,8 +21,8 @@ function App() {
     setSearchResults(response.data);
     setVideo(response.data.items[0]);
     getPlaylist(response.data.items[0]);
-
   }
+  
   async function getPlaylist(video){
     let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=${video.id.videoId}&type=video&key=AIzaSyDhl3itYChmaGsjhSxnnZ7gy6m6VFYjk4g`);
     debugger
