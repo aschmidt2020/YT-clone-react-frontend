@@ -7,8 +7,15 @@ const VideoPlayer = (props) => {
     },[props.videoID])
 
     return (
-        <iframe id="ytplayer" type="text/html" width="640" height="360"
-        src='' frameBorder="0"></iframe>
+        
+        <div>
+
+            <iframe id="ytplayer" type="text/html" width="640" height="360"
+            src='' frameBorder="0"></iframe>
+            {props.video.snippet.title}
+            {props.video.snippet.description}
+            
+        </div>
     );
 }
  

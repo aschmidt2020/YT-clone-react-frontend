@@ -12,7 +12,7 @@ const SearchBar = (props) => {
     }
     return (
         <form onSubmit={handleSubmit}>
-            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" value={searchTerm} onChange={(event) => setSearchTerm(event.target.value)} />
+            <input type="search" placeholder="Search" aria-label="Search" value={searchTerm} onChange={(event) => setSearchTerm(event.target.value)} />
             <button type='submit'>Search</button>
         </form>
     );

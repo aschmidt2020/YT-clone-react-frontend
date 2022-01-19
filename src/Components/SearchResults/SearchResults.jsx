@@ -2,7 +2,7 @@
 const SearchResults = (props) => {
 
     return ( 
-        <table>
+        <table className="table table-sm table-striped table-hover text-align-center" style={{'marginTop' : '2em'}}>
         <thead>
           <tr>
             <th>#</th>
@@ -14,7 +14,7 @@ const SearchResults = (props) => {
         <tbody>
           {props.searchResults.map((result, index) => {
               return (
-           <tr>
+           <tr key={result.id.videoId}>
             <td>{index + 1}</td>
             <td>{result.snippet.title}</td>
             <td>{result.snippet.description}</td>
