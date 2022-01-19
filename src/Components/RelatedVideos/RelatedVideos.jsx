@@ -1,9 +1,9 @@
+import React, { useState } from 'react';
 
-const SearchResults = (props) => {
-
-    return ( 
+const RelatedVideos = (props) => {
+    return (
         <div>
-            <h4>Search Results: </h4>
+            <h4>Related videos: </h4>
             <table className="table table-sm table-striped table-hover text-align-center" style={{'marginTop' : '2em'}}>
             <thead>
             <tr>
@@ -14,7 +14,7 @@ const SearchResults = (props) => {
             </tr>
             </thead>
             <tbody>
-            {props.searchResults.map((result, index) => {
+            {props.playlist.map((result, index) => {
                 return (
             <tr key={result.id.videoId}>
                 <td>{index + 1}</td>
@@ -28,7 +28,7 @@ const SearchResults = (props) => {
             </tbody>
             </table>
         </div>
-    )
+    );
 }
  
-export default SearchResults;
+export default RelatedVideos;
