@@ -22,7 +22,7 @@ const RelatedVideos = (props) => {
                     ? <td>{result.snippet.title}</td>
                     : <td>NO SNIPPET AVAILABLE</td>}
                 {'snippet' in result 
-                    ? <td>{result.snippet.description}</td>
+                    ? <td>{result.snippet.description.substring(0,100)}</td>
                     : <td>NO SNIPPET AVAILABLE</td>}
                 
                 <td><button onClick={() => props.getVideo(result)}>Watch</button></td>

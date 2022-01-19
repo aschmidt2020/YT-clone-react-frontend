@@ -18,11 +18,13 @@ const SearchResults = (props) => {
                 return (
             <tr key={result.id.videoId}>
                 <td>{index + 1}</td>
-                {'snippet' in result && 
-                <td>{result.snippet.title}</td>
+                {'snippet' in result 
+                ? <td>{result.snippet.title}</td>
+                : <td>NO SNIPPED AVAILABLE</td>
                 }
-                {'snippet' in result &&
-                <td>{result.snippet.description}</td>
+                {'snippet' in result
+                ? <td>{result.snippet.description.substring(0,100)}</td>
+                : <td>NO SNIPPED AVAILABLE</td>
                 }
                 <td><button onClick={() => props.getVideo(result)}>Watch</button></td>
             </tr>
