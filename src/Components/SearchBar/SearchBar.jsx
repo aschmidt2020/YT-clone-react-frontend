@@ -6,9 +6,9 @@ const SearchBar = (props) => {
 
     function handleSubmit(event){
         event.preventDefault();
-        GET {base_URL}/search?part=snippet
-                     &q=soccer
-                     &key={YOUR_API_KEY}
+        props.universalSearch(searchTerm);
+        setSearchTerm(''); //resets form
+
     }
     return (
         <form onSubmit={handleSubmit}>
