@@ -39,7 +39,7 @@ function App() {
 
    }
 
-   if(video != undefined && playlist != undefined && searchResults != undefined){
+   if(video !== undefined && playlist !== undefined && searchResults !== undefined){
      return (
        <div>
          <div className='container'>
@@ -63,7 +63,9 @@ function App() {
 
    else {
      return (
-       <p>Loading</p>
+      <div className="spinner-border text-secondary position-absolute top-50 start-50" role="status">
+      <span className="visually-hidden">Loading...</span>
+      </div>
      )
    }
    

@@ -6,11 +6,10 @@ const SearchBar = (props) => {
 
     function handleSubmit(event){
         event.preventDefault();
-        //debugger
         props.universalSearch(searchTerm);
         setSearchTerm(''); //resets form
-
     }
+    
     return (
         <form onSubmit={handleSubmit}>
             <input type="search" placeholder="Search" aria-label="Search" value={searchTerm} onChange={(event) => setSearchTerm(event.target.value)} />
