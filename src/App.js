@@ -6,29 +6,31 @@ import SearchResults from './Components/SearchResults/SearchResults';
 import VideoPlayer from "./Components/VideoPlayer/VideoPlayer";
 
 function App() {
+  const API_KEY = process.env.REACT_APP_API_KEY_YT
   const [video, setVideo] = useState(undefined);
   const [searchResults, setSearchResults] = useState(undefined);
   const [playlist, setPlaylist] = useState(undefined);
 
   useEffect(() => {
     pageLoad();
+    console.log(API_KEY)
   }, [])
 
   async function pageLoad() {
-    let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=coding&key=AIzaSyDhl3itYChmaGsjhSxnnZ7gy6m6VFYjk4g`);
+    let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=coding&key=${API_KEY}`);
     setSearchResults(response.data);
     setVideo(response.data.items[0]);
     getPlaylist(response.data.items[0]);
   }
 
   async function getPlaylist(video){
-    let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=${video.id.videoId}&type=video&key=AIzaSyDhl3itYChmaGsjhSxnnZ7gy6m6VFYjk4g`);
+    let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=${video.id.videoId}&type=video&key=${API_KEY}`);
     console.log(response);
     setPlaylist(response.data);
   }
 
   async function universalSearch(searchTerm){
-    let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${searchTerm}&key=AIzaSyDhl3itYChmaGsjhSxnnZ7gy6m6VFYjk4g`);
+    let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${searchTerm}&key=${API_KEY}`);
     setSearchResults(response.data);
     setVideo(response.data.items[0]);
   }
