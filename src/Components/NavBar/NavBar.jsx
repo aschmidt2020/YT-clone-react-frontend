@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 const NavBar = (props) => {
     return (
         <div>
-            <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+            {/* <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
             Link with href
             </a>
 
@@ -12,13 +12,15 @@ const NavBar = (props) => {
                 <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
-            <div class="offcanvas-body">
-                <div>
+            <div class="offcanvas-body"> */}
+                <nav>
+                <ul>
                     <Link to='/'><li>Home/Search</li></Link>
                     <Link to='/video'><li>VideoPlayer</li></Link>
                     <Link to='/search'><li>Search Results</li></Link>
-                </div>
-                <div class="dropdown mt-3">
+                </ul>
+                </nav>
+                {/* <div class="dropdown mt-3">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
                     Dropdown button
                 </button>
@@ -29,7 +31,7 @@ const NavBar = (props) => {
                 </ul>
                 </div>
             </div>
-            </div>
+            </div> */}
         </div>
     );
 }
