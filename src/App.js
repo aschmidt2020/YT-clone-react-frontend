@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate, useNavigate } from 'react-router-dom'
 import React, { useState, useEffect } from 'react';
 import RelatedVideos from './Components/RelatedVideos/RelatedVideos';
 import SearchBar from "./Components/SearchBar/SearchBar";
@@ -7,17 +7,51 @@ import SearchResults from './Components/SearchResults/SearchResults';
 import VideoPlayer from "./Components/VideoPlayer/VideoPlayer";
 import LoginForm from './Components/LoginForm/LoginForm';
 import NavBar from './Components/NavBar/NavBar';
+import HomePage from './Components/HomePage/HomePage';
+import jwt_decode from 'jwt-decode';
 
 function App() {
-  const API_KEY = process.env.REACT_APP_API_KEY_YT
+  const API_KEY = process.env.REACT_APP_API_KEY_YT;
+  const navigate = useNavigate();
+  const [user, setUser] = useState(null);
   const [video, setVideo] = useState(undefined);
   const [searchResults, setSearchResults] = useState(undefined);
   const [playlist, setPlaylist] = useState(undefined);
 
   useEffect(() => {
     pageLoad();
-    console.log(API_KEY)
+    debugger
+    const jwt = localStorage.getItem('token');
+    debugger
+    try{
+      const decodedUser = jwt_decode(jwt);
+      debugger
+      setUser(decodedUser);
+    } catch {}
+    debugger
   }, [])
+
+  async function login(username, password){
+    debugger
+    let response = await axios({
+      method: 'post',
+      url: 'http://127.0.0.1:8000/api/auth/login/',
+      headers: {}, 
+      data: {
+        'username': username,
+        'password': password
+      }
+    })
+    debugger
+    localStorage.setItem('token', response.data.access);
+    window.location='/';
+  }
+
+  async function logout(){
+    debugger
+    localStorage.removeItem('token');
+    window.location='/';
+  }
 
   async function pageLoad() {
     let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=coding&key=${API_KEY}`);
@@ -40,19 +74,19 @@ function App() {
 
   function getVideo(video){
     setVideo(video);
-    getPlaylist(video)
-
+    getPlaylist(video);
+    navigate('/video')
    }
 
    if(video !== undefined && playlist !== undefined && searchResults !== undefined){
      return (
        <div>
          <div className='container'>
-         <NavBar />
+         <NavBar user={user} universalSearch={universalSearch} login={login} logout={logout}/>
          <Routes>
-           <Route exact path='/' element={<SearchBar universalSearch={universalSearch} />} />
-           <Route path='/video' element={<VideoPlayer video={video} playlist={playlist.items} getVideo={getVideo}/>}/>
-           <Route path='/search' element={<SearchResults searchResults={searchResults.items} getVideo={getVideo}/>} />
+           <Route exact path='/' element={<HomePage universalSearch={universalSearch} video={video} playlist={playlist.items} getVideo={getVideo} searchResults={searchResults.items} getVideo={getVideo}/>} />
+           <Route path='/video' element={<VideoPlayer  universalSearch={universalSearch} video={video} playlist={playlist.items} getVideo={getVideo}/>}/>
+           <Route path='/search' element={<SearchResults  universalSearch={universalSearch} searchResults={searchResults.items} getVideo={getVideo}/>} />
          </Routes>
          </div>
        </div>
