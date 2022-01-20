@@ -182,8 +182,8 @@ function App() {
   }
 
   async function register(userInfo) {
-    let response = await axios({
-      method = 'post',
+    await axios({
+      method: 'post',
       url: 'http://127.0.0.1:8000/api/auth/register/',
       headers: {},
       data: userInfo
