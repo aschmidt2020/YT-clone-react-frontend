@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const LoginForm = (props) => {
 
-    const [email, setEmail] = useState({ email: "" });
+    const [username, setUsername] = useState({ username: "" });
     const [password, setPassword] = useState({ password: "" });
 
     function handleSubmit(e) {
