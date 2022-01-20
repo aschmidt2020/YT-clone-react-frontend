@@ -31,7 +31,7 @@ function App() {
 
   async function Register() {
     let response = await axios({
-      method = 'post',
+      method: 'post',
       url: 'http://127.0.0.1:8000/api/auth/register/',
       headers: {},
       data: {
@@ -39,9 +39,9 @@ function App() {
         'password': password,
         'email': email,
         'first_name': first_name,
-        'last_name': last_name
+        'last_name': last_name,
       }
-    })
+    });
   }
 
   async function login(username, password) {
