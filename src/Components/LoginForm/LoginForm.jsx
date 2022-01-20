@@ -2,13 +2,8 @@ import React, { useState } from "react";
 
 const LoginForm = (props) => {
 
-<<<<<<< Updated upstream
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-=======
     const [email, setEmail] = useState({ email: "" });
     const [password, setPassword] = useState({ password: "" });
->>>>>>> Stashed changes
 
     function handleSubmit(e) {
         debugger
