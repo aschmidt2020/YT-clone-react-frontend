@@ -1,10 +1,15 @@
 import axios from 'axios';
+import { Routes, Route } from 'react-router-dom'
 import React, { useState, useEffect } from 'react';
 import RelatedVideos from './Components/RelatedVideos/RelatedVideos';
 import SearchBar from "./Components/SearchBar/SearchBar";
 import SearchResults from './Components/SearchResults/SearchResults';
 import VideoPlayer from "./Components/VideoPlayer/VideoPlayer";
+<<<<<<< Updated upstream
 import LoginForm from './Components/LoginForm/LoginForm';
+=======
+import NavBar from './Components/NavBar/NavBar';
+>>>>>>> Stashed changes
 
 function App() {
   const API_KEY = process.env.REACT_APP_API_KEY_YT
@@ -59,10 +64,27 @@ function App() {
             <SearchResults searchResults={searchResults.items} getVideo={getVideo} />
           </div>
 
+<<<<<<< Updated upstream
         </div>
       </div>
     )
   }
+=======
+   if(video !== undefined && playlist !== undefined && searchResults !== undefined){
+     return (
+       <div>
+         <div className='container'>
+         <NavBar />
+         <Routes>
+           <Route exact path='/' element={<SearchBar universalSearch={universalSearch} />} />
+           <Route path='video' element={<VideoPlayer video={video} playlist={playlist.items} getVideo={getVideo}/>}/>
+           <Route path='/search' element={<SearchResults searchResults={searchResults.items} getVideo={getVideo}/>} />
+         </Routes>
+         </div>
+       </div>
+     )
+   }
+>>>>>>> Stashed changes
 
   else {
     return (
