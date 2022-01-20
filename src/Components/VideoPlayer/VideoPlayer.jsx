@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import CommentForm from '../CommentForm/CommentForm';
+import CommentList from '../CommentList/CommentList';
 import RelatedVideos from '../RelatedVideos/RelatedVideos';
 import SearchBar from "../SearchBar/SearchBar";
 
@@ -42,7 +43,8 @@ const VideoPlayer = (props) => {
 
             </div>
             <div className='row'>
-                <CommentForm videoId={props.video.id.videoId}/>
+                {props.user && <CommentForm videoId={props.video.id.videoId} addComment={props.addComment}/>}
+                <CommentList comments={props.comments}/>
             </div>
         </div>
     );

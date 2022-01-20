@@ -5,18 +5,17 @@ const CommentForm = (props) => {
     const [comment, setComment] = useState('');
 
     function handleSubmit(e) {
-        debugger
         e.preventDefault();
-        let comment = {
+        let commentPost = {
             "video_id": props.videoId,
             "text": comment,
             "likes": 0,
             "dislikes": 0
         }
-
-        props.addComment(comment);
-
-
+        
+        debugger
+        props.addComment(commentPost);
+        setComment('');
     }
 
     return (

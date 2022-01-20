@@ -14,12 +14,143 @@ function App() {
   const API_KEY = process.env.REACT_APP_API_KEY_YT;
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
-  const [video, setVideo] = useState(undefined);
-  const [searchResults, setSearchResults] = useState(undefined);
-  const [playlist, setPlaylist] = useState(undefined);
+  const [video, setVideo] = useState(
+    {
+      "kind": "youtube#searchResult",
+        "etag": "okmftF2A9o616QREoohKV3RbkK4",
+        "id": {
+          "kind": "youtube#video",
+          "videoId": "I-k-iTUMQAY"
+        },
+        "snippet": {
+          "publishedAt": "2020-05-30T17:00:07Z",
+          "channelId": "UCgqGpYjhnWvhE5-QrmXLkoQ",
+          "title": "basics of CODING in 10 minutes",
+          "description": "Hey Guys! Thought I'd switch it up and give you some CS instead of Philosophy today (woop woop to a Joint Honours Degree!)",
+          "thumbnails": {
+            "default": {
+              "url": "https://i.ytimg.com/vi/I-k-iTUMQAY/default.jpg",
+              "width": 120,
+              "height": 90
+            },
+            "medium": {
+              "url": "https://i.ytimg.com/vi/I-k-iTUMQAY/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+            },
+            "high": {
+              "url": "https://i.ytimg.com/vi/I-k-iTUMQAY/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+            }
+          },
+          "channelTitle": "The StudyTube Project",
+          "liveBroadcastContent": "none",
+          "publishTime": "2020-05-30T17:00:07Z"
+        }
+      },
+  );
+  const [searchResults, setSearchResults] = useState(
+    {
+      "kind": "youtube#searchListResponse",
+      "etag": "_JgZYPf56gSXVmDsvh53MYWUZT8",
+      "nextPageToken": "CAUQAA",
+      "regionCode": "US",
+      "pageInfo": {
+        "totalResults": 1000000,
+        "resultsPerPage": 5
+      },
+      "items": [
+        {
+          "kind": "youtube#searchResult",
+          "etag": "okmftF2A9o616QREoohKV3RbkK4",
+          "id": {
+            "kind": "youtube#video",
+            "videoId": "I-k-iTUMQAY"
+          },
+          "snippet": {
+            "publishedAt": "2020-05-30T17:00:07Z",
+            "channelId": "UCgqGpYjhnWvhE5-QrmXLkoQ",
+            "title": "basics of CODING in 10 minutes",
+            "description": "Hey Guys! Thought I'd switch it up and give you some CS instead of Philosophy today (woop woop to a Joint Honours Degree!)",
+            "thumbnails": {
+              "default": {
+                "url": "https://i.ytimg.com/vi/I-k-iTUMQAY/default.jpg",
+                "width": 120,
+                "height": 90
+              },
+              "medium": {
+                "url": "https://i.ytimg.com/vi/I-k-iTUMQAY/mqdefault.jpg",
+                "width": 320,
+                "height": 180
+              },
+              "high": {
+                "url": "https://i.ytimg.com/vi/I-k-iTUMQAY/hqdefault.jpg",
+                "width": 480,
+                "height": 360
+              }
+            },
+            "channelTitle": "The StudyTube Project",
+            "liveBroadcastContent": "none",
+            "publishTime": "2020-05-30T17:00:07Z"
+          }
+        },
+      ]
+    }
+  );
+  const [playlist, setPlaylist] = useState(
+    {
+      "kind": "youtube#searchListResponse",
+      "etag": "_JgZYPf56gSXVmDsvh53MYWUZT8",
+      "nextPageToken": "CAUQAA",
+      "regionCode": "US",
+      "pageInfo": {
+        "totalResults": 1000000,
+        "resultsPerPage": 5
+      },
+      "items": [
+        {
+          "kind": "youtube#searchResult",
+          "etag": "okmftF2A9o616QREoohKV3RbkK4",
+          "id": {
+            "kind": "youtube#video",
+            "videoId": "I-k-iTUMQAY"
+          },
+          "snippet": {
+            "publishedAt": "2020-05-30T17:00:07Z",
+            "channelId": "UCgqGpYjhnWvhE5-QrmXLkoQ",
+            "title": "basics of CODING in 10 minutes",
+            "description": "Hey Guys! Thought I'd switch it up and give you some CS instead of Philosophy today (woop woop to a Joint Honours Degree!)",
+            "thumbnails": {
+              "default": {
+                "url": "https://i.ytimg.com/vi/I-k-iTUMQAY/default.jpg",
+                "width": 120,
+                "height": 90
+              },
+              "medium": {
+                "url": "https://i.ytimg.com/vi/I-k-iTUMQAY/mqdefault.jpg",
+                "width": 320,
+                "height": 180
+              },
+              "high": {
+                "url": "https://i.ytimg.com/vi/I-k-iTUMQAY/hqdefault.jpg",
+                "width": 480,
+                "height": 360
+              }
+            },
+            "channelTitle": "The StudyTube Project",
+            "liveBroadcastContent": "none",
+            "publishTime": "2020-05-30T17:00:07Z"
+          }
+        },
+      ]
+    }
+  );
+
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
-    pageLoad();
+    //pageLoad();
     const tokenFromStorage = localStorage.getItem('token');
     try{
       const decodedUser = jwt_decode(tokenFromStorage);
@@ -69,22 +200,31 @@ function App() {
     setVideo(response.data.items[0]);
   }
 
+  async function getComments(video){
+    let response = await axios.get(`http://127.0.0.1:8000/api/comments/all/${video.id.videoId}/`);
+    debugger
+    setComments(response.data);
+  }
+
   function getVideo(video){
     setVideo(video);
     getPlaylist(video);
-    navigate('/video')
+    navigate('/video');
+    getComments(video);
    }
 
    async function addComment(postRequest){
       const jwt = localStorage.getItem('token');
       await axios({
         method: 'post',
-        url: 'http://127.0.0.1:8000/api/auth/login/',
+        url: 'http://127.0.0.1:8000/api/comments/addcomment/',
         headers: {
           Authorization: 'Bearer ' + jwt
         },
         data: postRequest,
       })
+      debugger
+      getComments(video);
     }
 
    if(video !== undefined && playlist !== undefined && searchResults !== undefined){
@@ -94,7 +234,7 @@ function App() {
          <NavBar user={user} universalSearch={universalSearch} login={login} logout={logout}/>
          <Routes>
            <Route exact path='/' element={<HomePage universalSearch={universalSearch} video={video} playlist={playlist.items} getVideo={getVideo} searchResults={searchResults.items} getVideo={getVideo}/>} />
-           <Route path='/video' element={<VideoPlayer addComment={addComment} universalSearch={universalSearch} video={video} playlist={playlist.items} getVideo={getVideo}/>}/>
+           <Route path='/video' element={<VideoPlayer user={user} comments={comments} addComment={addComment} universalSearch={universalSearch} video={video} playlist={playlist.items} getVideo={getVideo}/>}/>
            <Route path='/search' element={<SearchResults  universalSearch={universalSearch} searchResults={searchResults.items} getVideo={getVideo}/>} />
          </Routes>
          </div>
