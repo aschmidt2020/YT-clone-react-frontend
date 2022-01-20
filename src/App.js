@@ -236,7 +236,6 @@ function App() {
     getComments(video);
   }
 
-<<<<<<< HEAD
     async function deleteComment(comment){
       const jwt = localStorage.getItem('token');
       await axios({
@@ -277,23 +276,6 @@ function App() {
        </div>
      )
    }
-=======
-  if (video !== undefined && playlist !== undefined && searchResults !== undefined) {
-    return (
-      <div>
-        <div className='container'>
-          <NavBar user={user} universalSearch={universalSearch} login={login} logout={logout} register={register} />
-          <Routes>
-            <Route exact path='/' element={<HomePage universalSearch={universalSearch} video={video} playlist={playlist.items} getVideo={getVideo} searchResults={searchResults.items} getVideo={getVideo} />} />
-            <Route path='/register' element={<RegistrationForm register={register} />} />
-            <Route path='/video' element={<VideoPlayer user={user} comments={comments} addComment={addComment} universalSearch={universalSearch} video={video} playlist={playlist.items} getVideo={getVideo} />} />
-            <Route path='/search' element={<SearchResults universalSearch={universalSearch} searchResults={searchResults.items} getVideo={getVideo} />} />
-          </Routes>
-        </div>
-      </div>
-    )
-  }
->>>>>>> 2bf128c7741f9abfcd27079723a55c725958a657
 
   else {
     return (
