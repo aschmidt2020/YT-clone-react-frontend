@@ -14,7 +14,7 @@ const RegistrationForm = (props) => {
     // const handleClose = () => setShow(false);
     // const handleShow = () => setShow(true);
 
-    function resetForm(){
+    function resetForm() {
         setUsername('');
         setPassword('');
         setEmail('');
@@ -26,13 +26,13 @@ const RegistrationForm = (props) => {
     function handleSubmit(e) {
         debugger
         e.preventDefault();
-       let userInfo = {
-        "username": username,
-        "password": password,
-        "email": email,
-        "first_name": firstName,
-        "last_name": lastName
-    }
+        let userInfo = {
+            "username": username,
+            "password": password,
+            "email": email,
+            "first_name": firstName,
+            "last_name": lastName
+        }
 
         props.register(userInfo);
         debugger
@@ -41,7 +41,7 @@ const RegistrationForm = (props) => {
 
     return (
         <div id="sign-up">
-          {/* <Button variant="btn btn-outline-secondary" onClick={handleShow}>
+            {/* <Button variant="btn btn-outline-secondary" onClick={handleShow}>
           Register Here
           </Button>
 
@@ -54,7 +54,7 @@ const RegistrationForm = (props) => {
 
             <form onSubmit={handleSubmit}>
                 <label>First Name</label>
-                <input type='text' defaultValue={firstName} onChange={(event) => setFirstName(event.target.value)}/>
+                <input type='text' value={firstName} onChange={(event) => setFirstName(event.target.value)}></input>
                 <label>Last Name</label>
                 <input type='text' value={lastName} onChange={(e) => setLastName(e.target.value)}></input>
                 <label>Email</label>
@@ -65,7 +65,7 @@ const RegistrationForm = (props) => {
                 <input type='password' value={password} onChange={(e) => setPassword(e.target.value)}></input>
                 <button type='submit' >Sign Up!</button>
             </form>
-{/*             
+            {/*             
             </Modal.Body>
             <Modal.Footer>
               <Button variant="secondary" onClick={resetForm}>
@@ -76,7 +76,7 @@ const RegistrationForm = (props) => {
               </Button>
             </Modal.Footer>
           </Modal> */}
-    </div>
+        </div>
 
     );
 

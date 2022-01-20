@@ -18,38 +18,38 @@ function App() {
   const [video, setVideo] = useState(
     {
       "kind": "youtube#searchResult",
-        "etag": "okmftF2A9o616QREoohKV3RbkK4",
-        "id": {
-          "kind": "youtube#video",
-          "videoId": "I-k-iTUMQAY"
-        },
-        "snippet": {
-          "publishedAt": "2020-05-30T17:00:07Z",
-          "channelId": "UCgqGpYjhnWvhE5-QrmXLkoQ",
-          "title": "basics of CODING in 10 minutes",
-          "description": "Hey Guys! Thought I'd switch it up and give you some CS instead of Philosophy today (woop woop to a Joint Honours Degree!)",
-          "thumbnails": {
-            "default": {
-              "url": "https://i.ytimg.com/vi/I-k-iTUMQAY/default.jpg",
-              "width": 120,
-              "height": 90
-            },
-            "medium": {
-              "url": "https://i.ytimg.com/vi/I-k-iTUMQAY/mqdefault.jpg",
-              "width": 320,
-              "height": 180
-            },
-            "high": {
-              "url": "https://i.ytimg.com/vi/I-k-iTUMQAY/hqdefault.jpg",
-              "width": 480,
-              "height": 360
-            }
-          },
-          "channelTitle": "The StudyTube Project",
-          "liveBroadcastContent": "none",
-          "publishTime": "2020-05-30T17:00:07Z"
-        }
+      "etag": "okmftF2A9o616QREoohKV3RbkK4",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "I-k-iTUMQAY"
       },
+      "snippet": {
+        "publishedAt": "2020-05-30T17:00:07Z",
+        "channelId": "UCgqGpYjhnWvhE5-QrmXLkoQ",
+        "title": "basics of CODING in 10 minutes",
+        "description": "Hey Guys! Thought I'd switch it up and give you some CS instead of Philosophy today (woop woop to a Joint Honours Degree!)",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/I-k-iTUMQAY/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/I-k-iTUMQAY/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/I-k-iTUMQAY/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "The StudyTube Project",
+        "liveBroadcastContent": "none",
+        "publishTime": "2020-05-30T17:00:07Z"
+      }
+    },
   );
   const [searchResults, setSearchResults] = useState(
     {
@@ -153,19 +153,19 @@ function App() {
   useEffect(() => {
     //pageLoad();
     const tokenFromStorage = localStorage.getItem('token');
-    try{
+    try {
       const decodedUser = jwt_decode(tokenFromStorage);
       setUser(decodedUser);
-    } catch {}
+    } catch { }
     debugger
   }, [])
 
-  async function login(username, password){
+  async function login(username, password) {
     debugger
     let response = await axios({
       method: 'post',
       url: 'http://127.0.0.1:8000/api/auth/login/',
-      headers: {}, 
+      headers: {},
       data: {
         'username': username,
         'password': password
@@ -173,13 +173,13 @@ function App() {
     })
     debugger
     localStorage.setItem('token', response.data.access);
-    window.location='/';
+    window.location = '/';
   }
 
-  async function logout(){
+  async function logout() {
     debugger
     localStorage.removeItem('token');
-    window.location='/';
+    window.location = '/';
   }
 
   async function register(userInfo) {
@@ -199,43 +199,44 @@ function App() {
     getPlaylist(response.data.items[0]);
   }
 
-  async function getPlaylist(video){
+  async function getPlaylist(video) {
     let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=${video.id.videoId}&type=video&key=${API_KEY}`);
     console.log(response);
     setPlaylist(response.data);
   }
 
-  async function universalSearch(searchTerm){
+  async function universalSearch(searchTerm) {
     let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${searchTerm}&key=${API_KEY}`);
     setSearchResults(response.data);
     setVideo(response.data.items[0]);
   }
 
-  async function getComments(video){
+  async function getComments(video) {
     let response = await axios.get(`http://127.0.0.1:8000/api/comments/all/${video.id.videoId}/`);
     setComments(response.data);
   }
 
-  function getVideo(video){
+  function getVideo(video) {
     setVideo(video);
     getPlaylist(video);
     navigate('/video');
     getComments(video);
-   }
+  }
 
-   async function addComment(postRequest){
-      const jwt = localStorage.getItem('token');
-      await axios({
-        method: 'post',
-        url: 'http://127.0.0.1:8000/api/comments/addcomment/',
-        headers: {
-          Authorization: 'Bearer ' + jwt
-        },
-        data: postRequest,
-      })
-      getComments(video);
-    }
+  async function addComment(postRequest) {
+    const jwt = localStorage.getItem('token');
+    await axios({
+      method: 'post',
+      url: 'http://127.0.0.1:8000/api/comments/addcomment/',
+      headers: {
+        Authorization: 'Bearer ' + jwt
+      },
+      data: postRequest,
+    })
+    getComments(video);
+  }
 
+<<<<<<< HEAD
     async function deleteComment(comment){
       const jwt = localStorage.getItem('token');
       await axios({
@@ -276,15 +277,32 @@ function App() {
        </div>
      )
    }
-
-   else {
-     return (
-      <div className="spinner-border text-secondary position-absolute top-50 start-50" role="status">
-      <span className="visually-hidden">Loading...</span>
+=======
+  if (video !== undefined && playlist !== undefined && searchResults !== undefined) {
+    return (
+      <div>
+        <div className='container'>
+          <NavBar user={user} universalSearch={universalSearch} login={login} logout={logout} register={register} />
+          <Routes>
+            <Route exact path='/' element={<HomePage universalSearch={universalSearch} video={video} playlist={playlist.items} getVideo={getVideo} searchResults={searchResults.items} getVideo={getVideo} />} />
+            <Route path='/register' element={<RegistrationForm register={register} />} />
+            <Route path='/video' element={<VideoPlayer user={user} comments={comments} addComment={addComment} universalSearch={universalSearch} video={video} playlist={playlist.items} getVideo={getVideo} />} />
+            <Route path='/search' element={<SearchResults universalSearch={universalSearch} searchResults={searchResults.items} getVideo={getVideo} />} />
+          </Routes>
+        </div>
       </div>
-     )
-   }
-   
+    )
+  }
+>>>>>>> 2bf128c7741f9abfcd27079723a55c725958a657
+
+  else {
+    return (
+      <div className="spinner-border text-secondary position-absolute top-50 start-50" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </div>
+    )
+  }
+
 }
 
 export default App;
