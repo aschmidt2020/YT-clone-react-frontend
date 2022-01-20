@@ -41,9 +41,9 @@ const VideoPlayer = (props) => {
                 </div>
 
             </div>
-            {/* <div className='row'>
-                <CommentForm />
-            </div> */}
+            <div className='row'>
+                <CommentForm videoId={props.video.id.videoId}/>
+            </div>
         </div>
     );
    

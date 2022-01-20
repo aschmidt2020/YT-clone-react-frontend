@@ -20,12 +20,9 @@ function App() {
 
   useEffect(() => {
     pageLoad();
-    debugger
-    const jwt = localStorage.getItem('token');
-    debugger
+    const tokenFromStorage = localStorage.getItem('token');
     try{
-      const decodedUser = jwt_decode(jwt);
-      debugger
+      const decodedUser = jwt_decode(tokenFromStorage);
       setUser(decodedUser);
     } catch {}
     debugger
@@ -78,6 +75,18 @@ function App() {
     navigate('/video')
    }
 
+   async function addComment(postRequest){
+      const jwt = localStorage.getItem('token');
+      await axios({
+        method: 'post',
+        url: 'http://127.0.0.1:8000/api/auth/login/',
+        headers: {
+          Authorization: 'Bearer ' + jwt
+        },
+        data: postRequest,
+      })
+    }
+
    if(video !== undefined && playlist !== undefined && searchResults !== undefined){
      return (
        <div>
@@ -85,7 +94,7 @@ function App() {
          <NavBar user={user} universalSearch={universalSearch} login={login} logout={logout}/>
          <Routes>
            <Route exact path='/' element={<HomePage universalSearch={universalSearch} video={video} playlist={playlist.items} getVideo={getVideo} searchResults={searchResults.items} getVideo={getVideo}/>} />
-           <Route path='/video' element={<VideoPlayer  universalSearch={universalSearch} video={video} playlist={playlist.items} getVideo={getVideo}/>}/>
+           <Route path='/video' element={<VideoPlayer addComment={addComment} universalSearch={universalSearch} video={video} playlist={playlist.items} getVideo={getVideo}/>}/>
            <Route path='/search' element={<SearchResults  universalSearch={universalSearch} searchResults={searchResults.items} getVideo={getVideo}/>} />
          </Routes>
          </div>
