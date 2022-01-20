@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import LoginForm from '../LoginForm/LoginForm';
+import RegistrationForm from '../RegistrationForm/RegistrationForm';
 import SearchBar from '../SearchBar/SearchBar';
 
 const NavBar = (props) => {
@@ -36,7 +37,7 @@ const NavBar = (props) => {
                 </ul>
                 </div> */}
                 <div>
-                    {!props.user && <LoginForm login={props.login}/>}
+                    {!props.user && <div> <LoginForm login={props.login}/> <RegistrationForm register={props.register} /> </div>}
                     {props.user && <button onClick={props.logout}>Log Out</button>}
                 </div>
             </div>

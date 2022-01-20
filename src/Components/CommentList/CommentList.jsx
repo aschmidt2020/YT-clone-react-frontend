@@ -15,6 +15,7 @@ const CommentList = (props) => {
             <tr key={comment.id}>
                 <td>{comment.user.username}</td>
                 <td>{comment.text}</td>
+                <td><button>Update Comment</button></td>
             </tr>
                     
             )}

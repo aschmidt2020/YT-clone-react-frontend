@@ -3,35 +3,39 @@ import React, { useState } from "react";
 
 const RegistrationForm = (props) => {
 
-    const [state, setState] = useState({ username: "", password: "", email: "", first_name: "", last_name: "" });
-
-    const handleChange = e => {
-        const { name, value } = e.target;
-        setState(lastState => ({
-            ...lastState,
-            [name]: value
-        }));
-    }
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
 
     function handleSubmit(e) {
         debugger
         e.preventDefault();
-        props.Register(username, password, email, first_name, last_name);
+       let userInfo = {
+        "username": username,
+        "password": password,
+        "email": email,
+        "first_name": firstName,
+        "last_name": lastName
+    }
+
+        props.register(userInfo);
     }
 
     return (
         <div className="sign-up">
             <form onSubmit={handleSubmit}>
                 <label>First Name</label>
-                <input name="first_name" value={state.first_name} onChange={handleChange}></input>
+                <input name="first_name" value={firstName} onChange={(e) => setFirstName(e.target.value)}></input>
                 <label>Last Name</label>
-                <input name="last_name" value={state.last_name} onChange={handleChange}></input>
+                <input name="last_name" value={lastName} onChange={(e) => setLastName(e.target.value)}></input>
                 <label>Email</label>
-                <input name="email" type='email' value={state.email} onChange={handleChange}></input>
+                <input name="email" type='email' value={email} onChange={(e) => setEmail(e.target.value)}></input>
                 <label>Username</label>
-                <input name="username" value={state.username} onChange={handleChange}></input>
+                <input name="username" value={username} onChange={(e) => setUsername(e.target.value)}></input>
                 <label>Password</label>
-                <input name="password" type='password' value={state.password} onChange={handleChange}></input>
+                <input name="password" type='password' value={password} onChange={(e) => setPassword(e.target.value)}></input>
                 <button type='submit' >Sign Up!</button>
             </form>
         </div>
