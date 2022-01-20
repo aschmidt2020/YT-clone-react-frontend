@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import CommentForm from '../CommentForm/CommentForm';
 import RelatedVideos from '../RelatedVideos/RelatedVideos';
 import SearchBar from "../SearchBar/SearchBar";
 
@@ -40,6 +41,9 @@ const VideoPlayer = (props) => {
                 </div>
 
             </div>
+            {/* <div className='row'>
+                <CommentForm />
+            </div> */}
         </div>
     );
    
