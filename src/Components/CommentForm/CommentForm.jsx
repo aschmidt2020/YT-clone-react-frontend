@@ -19,7 +19,7 @@ const CommentForm = (props) => {
     }
 
     return (
-        <div className="log-in">
+        <div>
             <form onSubmit={handleSubmit}>
                 <label>Comment</label>
                 <input type='text' value={comment} onChange={(e) => setComment(e.target.value)}></input>

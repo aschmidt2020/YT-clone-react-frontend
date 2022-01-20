@@ -43,8 +43,8 @@ const VideoPlayer = (props) => {
 
             </div>
             <div className='row'>
-                {props.user && <CommentForm videoId={props.video.id.videoId} addComment={props.addComment} deleteComment={props.deleteComment} updateComment={props.updateComment}/>}
-                <CommentList comments={props.comments}/>
+                {props.user && <CommentForm videoId={props.video.id.videoId} addComment={props.addComment}/>}
+                <CommentList comments={props.comments} deleteComment={props.deleteComment} updateComment={props.updateComment}/>
             </div>
         </div>
     );

@@ -240,7 +240,7 @@ function App() {
       const jwt = localStorage.getItem('token');
       await axios({
         method: 'delete',
-        url: `http://127.0.0.1:8000/api/comments/deletecomment/${comment.id}`,
+        url: `http://127.0.0.1:8000/api/comments/deletecomment/${comment.id}/`,
         headers: {
           Authorization: 'Bearer ' + jwt
         },
@@ -249,15 +249,17 @@ function App() {
     }
 
     async function updateComment(comment){
+
       const jwt = localStorage.getItem('token');
       await axios({
         method: 'put',
-        url: `http://127.0.0.1:8000/api/comments/editcomment/${comment.id}`,
+        url: `http://127.0.0.1:8000/api/comments/editcomment/${comment.id}/`,
         headers: {
           Authorization: 'Bearer ' + jwt
         },
         data: comment
-      })
+      });
+      debugger
       getComments(video);
     }
 
