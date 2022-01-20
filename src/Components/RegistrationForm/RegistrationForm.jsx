@@ -9,10 +9,10 @@ const RegistrationForm = (props) => {
     const [email, setEmail] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
-    const [show, setShow] = useState(false);
+    // const [show, setShow] = useState(false);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    // const handleClose = () => setShow(false);
+    // const handleShow = () => setShow(true);
 
     function resetForm(){
         setUsername('');
@@ -20,7 +20,7 @@ const RegistrationForm = (props) => {
         setEmail('');
         setFirstName('');
         setLastName('');
-        handleClose();
+        //handleClose();
     }
 
     function handleSubmit(e) {
@@ -35,11 +35,13 @@ const RegistrationForm = (props) => {
     }
 
         props.register(userInfo);
+        debugger
+        resetForm();
     }
 
     return (
         <div id="sign-up">
-          <Button variant="btn btn-outline-secondary" onClick={handleShow} style={{'marginTop':'1em'}} data-toggle='popover' title='Add Song' data-content='Add Song' trigger='hover'>
+          {/* <Button variant="btn btn-outline-secondary" onClick={handleShow}>
           Register Here
           </Button>
 
@@ -48,22 +50,22 @@ const RegistrationForm = (props) => {
               <Modal.Title>Register</Modal.Title>
             </Modal.Header>
 
-            <Modal.Body>
+            <Modal.Body> */}
 
             <form onSubmit={handleSubmit}>
                 <label>First Name</label>
-                <input name="first_name" type='text' value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+                <input type='text' defaultValue={firstName} onChange={(event) => setFirstName(event.target.value)}/>
                 <label>Last Name</label>
-                <input name="last_name" type='text' value={lastName} onChange={(e) => setLastName(e.target.value)}></input>
+                <input type='text' value={lastName} onChange={(e) => setLastName(e.target.value)}></input>
                 <label>Email</label>
-                <input name="email" type='text' value={email} onChange={(e) => setEmail(e.target.value)}></input>
+                <input type='email' value={email} onChange={(e) => setEmail(e.target.value)}></input>
                 <label>Username</label>
-                <input name="username" type='text' value={username} onChange={(e) => setUsername(e.target.value)}></input>
+                <input type='text' value={username} onChange={(e) => setUsername(e.target.value)}></input>
                 <label>Password</label>
-                <input name="password" type='text' value={password} onChange={(e) => setPassword(e.target.value)}></input>
+                <input type='password' value={password} onChange={(e) => setPassword(e.target.value)}></input>
                 <button type='submit' >Sign Up!</button>
             </form>
-            
+{/*             
             </Modal.Body>
             <Modal.Footer>
               <Button variant="secondary" onClick={resetForm}>
@@ -73,7 +75,7 @@ const RegistrationForm = (props) => {
                 Add
               </Button>
             </Modal.Footer>
-          </Modal>
+          </Modal> */}
     </div>
 
     );

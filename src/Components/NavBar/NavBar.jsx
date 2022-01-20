@@ -37,7 +37,7 @@ const NavBar = (props) => {
                 </ul>
                 </div> */}
                 <div>
-                    {!props.user && <div> <LoginForm login={props.login}/> <RegistrationForm register={props.register} /> </div>}
+                    {!props.user && <div> <LoginForm login={props.login}/> <Link to='/register'>Register</Link> </div>}
                     {props.user && <button onClick={props.logout}>Log Out</button>}
                 </div>
             </div>

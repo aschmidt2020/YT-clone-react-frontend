@@ -9,6 +9,7 @@ import LoginForm from './Components/LoginForm/LoginForm';
 import NavBar from './Components/NavBar/NavBar';
 import HomePage from './Components/HomePage/HomePage';
 import jwt_decode from 'jwt-decode';
+import RegistrationForm from './Components/RegistrationForm/RegistrationForm';
 
 function App() {
   const API_KEY = process.env.REACT_APP_API_KEY_YT;
@@ -188,6 +189,7 @@ function App() {
       headers: {},
       data: userInfo
     })
+
   }
 
   async function pageLoad() {
@@ -241,6 +243,7 @@ function App() {
          <NavBar user={user} universalSearch={universalSearch} login={login} logout={logout} register={register}/>
          <Routes>
            <Route exact path='/' element={<HomePage universalSearch={universalSearch} video={video} playlist={playlist.items} getVideo={getVideo} searchResults={searchResults.items} getVideo={getVideo}/>} />
+           <Route path='/register' element={<RegistrationForm register={register}/>} />
            <Route path='/video' element={<VideoPlayer user={user} comments={comments} addComment={addComment} universalSearch={universalSearch} video={video} playlist={playlist.items} getVideo={getVideo}/>}/>
            <Route path='/search' element={<SearchResults  universalSearch={universalSearch} searchResults={searchResults.items} getVideo={getVideo}/>} />
          </Routes>
