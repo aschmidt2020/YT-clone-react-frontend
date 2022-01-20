@@ -236,6 +236,31 @@ function App() {
       getComments(video);
     }
 
+    async function deleteComment(comment){
+      const jwt = localStorage.getItem('token');
+      await axios({
+        method: 'delete',
+        url: `http://127.0.0.1:8000/api/comments/deletecomment/${comment.id}`,
+        headers: {
+          Authorization: 'Bearer ' + jwt
+        },
+      })
+      getComments(video);
+    }
+
+    async function updateComment(comment){
+      const jwt = localStorage.getItem('token');
+      await axios({
+        method: 'put',
+        url: `http://127.0.0.1:8000/api/comments/editcomment/${comment.id}`,
+        headers: {
+          Authorization: 'Bearer ' + jwt
+        },
+        data: comment
+      })
+      getComments(video);
+    }
+
    if(video !== undefined && playlist !== undefined && searchResults !== undefined){
      return (
        <div>
@@ -244,7 +269,7 @@ function App() {
          <Routes>
            <Route exact path='/' element={<HomePage universalSearch={universalSearch} video={video} playlist={playlist.items} getVideo={getVideo} searchResults={searchResults.items} getVideo={getVideo}/>} />
            <Route path='/register' element={<RegistrationForm register={register}/>} />
-           <Route path='/video' element={<VideoPlayer user={user} comments={comments} addComment={addComment} universalSearch={universalSearch} video={video} playlist={playlist.items} getVideo={getVideo}/>}/>
+           <Route path='/video' element={<VideoPlayer user={user} comments={comments} deleteComment={deleteComment} updateComment={updateComment} addComment={addComment} universalSearch={universalSearch} video={video} playlist={playlist.items} getVideo={getVideo}/>}/>
            <Route path='/search' element={<SearchResults  universalSearch={universalSearch} searchResults={searchResults.items} getVideo={getVideo}/>} />
          </Routes>
          </div>

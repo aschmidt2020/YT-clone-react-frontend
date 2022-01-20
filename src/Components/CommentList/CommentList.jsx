@@ -15,7 +15,8 @@ const CommentList = (props) => {
             <tr key={comment.id}>
                 <td>{comment.user.username}</td>
                 <td>{comment.text}</td>
-                <td><button>Update Comment</button></td>
+                <td><button onClick={() => props.updateComment(comment)}>Update Comment</button></td>
+                <td><button onClick={() => props.deleteComment(comment)}>Delete Comment</button></td>
             </tr>
                     
             )}
