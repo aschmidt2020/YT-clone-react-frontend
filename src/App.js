@@ -305,7 +305,7 @@ function App() {
       const jwt = localStorage.getItem('token');
       await axios({
         method: 'post',
-        url: `http://127.0.0.1:8000/api/comments/replies/${commentId}/`,
+        url: `http://127.0.0.1:8000/api/comments/addreply/${commentId}/`,
         headers: {
           Authorization: 'Bearer ' + jwt
         },
@@ -335,7 +335,6 @@ function App() {
     }
 
     async function updateReply(reply){
-
       const jwt = localStorage.getItem('token');
       debugger
       await axios({

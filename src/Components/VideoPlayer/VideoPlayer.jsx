@@ -23,18 +23,18 @@ const VideoPlayer = (props) => {
                     src={videoURL} frameBorder="0"></iframe>
                     {'snippet' in props.video 
                         ?  <h3>{props.video.snippet.title}</h3>
-                        : <h3>NO SNIPPED AVAILABLE</h3>
+                        : <h3>NO SNIPPET AVAILABLE</h3>
                         }
                     {showFullDesc
                     ? ('snippet' in props.video
                         ? <p>{props.video.snippet.description}</p>
                         : <p>NO SNIPPET AVAILABLE</p>)
                     : ('snippet' in props.video 
-                        ? <p>{props.video.snippet.description.substring(0,100)}</p>
+                        ? <span>{props.video.snippet.description.substring(0,100)}</span>
                         : <p>NO SNIPPET AVAILABLE</p>
                     )
                         }
-                        <button onClick={handleDesc}>show description</button>
+                        <button type="button" className="btn btn-link" onClick={handleDesc}>show full description</button>
 
                 </div>
                 <div className='col'>
@@ -43,10 +43,11 @@ const VideoPlayer = (props) => {
 
             </div>
             <div className='row'>
-                {props.user && <CommentForm videoId={props.video.id.videoId} addComment={props.addComment}/>}
                 <CommentList user={props.user}
                 comments={props.comments} deleteComment={props.deleteComment} updateComment={props.updateComment}
                 addReply={props.addReply} deleteReply={props.deleteReply} updateReply={props.updateReply}/>
+                {props.user && 
+                <CommentForm videoId={props.video.id.videoId} addComment={props.addComment}/>}
             </div>
         </div>
     );

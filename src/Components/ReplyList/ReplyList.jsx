@@ -15,13 +15,26 @@ const ReplyList = (props) => {
         await axios({
             method: 'get',
             url: `http://127.0.0.1:8000/api/comments/replies/${props.comment.id}/`,
-            headers: {
-              Authorization: 'Bearer ' + token
-            },
+            headers: { },
           }).then(response => {
             setReplies(response.data);
           })
 
+    }
+
+    if(!props.user){
+        return (
+            <span>
+            {replies && replies.map((reply) => {
+                return(
+                    <div>
+                        <p>{reply.user.username}</p>
+                        <p>{reply.text}</p>
+                    </div>
+                )
+            })}
+            </span>
+        )
     }
     return ( 
         <span>

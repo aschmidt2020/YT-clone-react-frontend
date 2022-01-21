@@ -3,10 +3,11 @@ import CommentUpdate from '../CommentUpdate/CommentUpdate';
 import LikeDislikeButton from '../LikeDislikeButton/LikeDislikeButton';
 import ReplyList from '../ReplyList/ReplyList';
 import ReplyForm from '../ReplyForm/ReplyForm';
+import CommentForm from '../CommentForm/CommentForm';
 
 const CommentList = (props) => {
 
-    return ( 
+    if(props.user){
         <div>
             <h4>Comments: </h4>
             <table className="table table-sm table-striped table-hover text-align-center" style={{'marginTop' : '2em'}}>
@@ -21,8 +22,7 @@ const CommentList = (props) => {
                 return (
                 <tr key={comment.id}>
                     <td>{comment.user.username}</td>
-                    <td>{comment.text}</td>
-            
+                    <td>{comment.text}</td>          
                     <td>{props.user.user_id === comment.user.id
                     ? <span>
                         <CommentUpdate comment={comment} updateComment={props.updateComment}/>
@@ -36,6 +36,32 @@ const CommentList = (props) => {
                     }
                     </td>
                 
+            </tr>
+                    
+            )}
+            )}
+            </tbody>
+            </table>
+        </div>
+    }
+    return ( 
+        <div>
+            <h4>Comments: </h4>
+            <table className="table table-sm table-striped table-hover text-align-center" style={{'marginTop' : '2em'}}>
+            <thead>
+            <tr>
+                <th>User</th>
+                <th>Comment</th>
+                <th>Replies</th>
+            </tr>
+            </thead>
+            <tbody>
+            {props.comments && props.comments.map((comment) => {
+                return (
+                <tr key={comment.id}>
+                    <td>{comment.user.username}</td>
+                    <td>{comment.text}</td>          
+                    <td><ReplyList user={props.user} comment={comment} deleteReply={props.deleteReply} updateReply={props.updateReply}/></td> 
             </tr>
                     
             )}
