@@ -31,7 +31,7 @@ const CommentUpdate = (props) => {
     return (
         <span>
         <Button variant="btn btn-outline-secondary" onClick={handleShow} data-toggle='popover' title='Edit Comment' data-content='Edit comment' trigger='hover'>
-        <i className="bi bi-pen"></i>
+        &nbsp;<i className="bi bi-pen"></i>&nbsp;&nbsp;
         </Button>
 
         <Modal show={show} onHide={handleClose}>

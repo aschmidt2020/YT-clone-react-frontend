@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import CommentUpdate from '../CommentUpdate/CommentUpdate';
+import LikeDislikeButton from '../LikeDislikeButton/LikeDislikeButton';
 
 const CommentList = (props) => {
 
@@ -19,14 +20,15 @@ const CommentList = (props) => {
                 <tr key={comment.id}>
                     <td>{comment.user.username}</td>
                     <td>{comment.text}</td>
-                    <td>{props.user.user_id === comment.user.id &&
-                    <CommentUpdate comment={comment} updateComment={props.updateComment}/>
+                    <td>{props.user.user_id === comment.user.id
+                    ? <span>
+                        <CommentUpdate comment={comment} updateComment={props.updateComment}/>
+                        <button style={{'marginLeft': '1em'}} className="btn btn-outline-secondary" onClick={() => props.deleteComment(comment)}
+                        data-toggle='popover' title='Delete Comment' data-content='Delete Comment' trigger='hover'>&nbsp;<i className="bi bi-trash">&nbsp;&nbsp;</i></button>
+                    </span> 
+                    : <span><LikeDislikeButton comment={comment} updateComment={props.updateComment} /></span>
                     }
                     </td>
-                <td>{props.user.user_id === comment.user.id && 
-                 <button className="btn btn-outline-secondary" onClick={() => props.deleteComment(comment)}
-                 data-toggle='popover' title='Delete Comment' data-content='Delete Comment' trigger='hover'><i className="bi bi-trash"></i></button>}
-                   </td>
             </tr>
                     
             )}

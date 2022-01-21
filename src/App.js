@@ -285,6 +285,7 @@ function App() {
     async function updateComment(comment){
 
       const jwt = localStorage.getItem('token');
+      debugger
       await axios({
         method: 'put',
         url: `http://127.0.0.1:8000/api/comments/editcomment/${comment.id}/`,
