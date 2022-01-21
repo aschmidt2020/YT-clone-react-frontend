@@ -44,7 +44,7 @@ const VideoPlayer = (props) => {
             </div>
             <div className='row'>
                 {props.user && <CommentForm videoId={props.video.id.videoId} addComment={props.addComment}/>}
-                <CommentList comments={props.comments} deleteComment={props.deleteComment} updateComment={props.updateComment}/>
+                <CommentList user={props.user} comments={props.comments} deleteComment={props.deleteComment} updateComment={props.updateComment}/>
             </div>
         </div>
     );

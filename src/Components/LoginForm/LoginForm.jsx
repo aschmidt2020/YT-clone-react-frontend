@@ -35,11 +35,15 @@ const LoginForm = (props) => {
           <Modal.Body>
 
           <form onSubmit={handleSubmit}>
-                <label>Username</label>
-                <input type='text' value={username} onChange={(e) => setUsername(e.target.value)}></input>
-                <label>Password</label>
-                <input type='password' value={password} onChange={(e) => setPassword(e.target.value)}></input>
-                <button type='submit'>Login</button>
+          <div className="input-group mb-3">
+            <span className="input-group-text">Username</span>
+            <input className="form-control" type='text' value={username} onChange={(e) => setUsername(e.target.value)}></input>
+           </div>
+
+           <div className="input-group mb-3">
+            <span className="input-group-text">Password</span>
+            <input className="form-control" type='password' value={password} onChange={(e) => setPassword(e.target.value)}></input>
+           </div>
             </form>
           
           </Modal.Body>
@@ -48,7 +52,7 @@ const LoginForm = (props) => {
               Close
             </Button>
             <Button type='submit' variant="primary" onClick={handleSubmit}>
-              Update
+              Log In
             </Button>
           </Modal.Footer>
         </Modal>

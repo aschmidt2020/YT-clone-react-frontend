@@ -7,6 +7,7 @@ const RegistrationForm = (props) => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [passwordCheck, setPasswordCheck] = useState('');
     const [email, setEmail] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -27,17 +28,21 @@ const RegistrationForm = (props) => {
     function handleSubmit(e) {
         debugger
         e.preventDefault();
-        let userInfo = {
-            "username": username,
-            "password": password,
-            "email": email,
-            "first_name": firstName,
-            "last_name": lastName
+        if(password === passwordCheck){
+          let userInfo = {
+              "username": username,
+              "password": password,
+              "email": email,
+              "first_name": firstName,
+              "last_name": lastName
+          }
+          props.register(userInfo);
+          debugger
+          resetForm();
         }
-
-        props.register(userInfo);
-        debugger
-        resetForm();
+        else {
+          alert('Passwords must match.')
+        }
     }
 
     return (
@@ -54,26 +59,44 @@ const RegistrationForm = (props) => {
             <Modal.Body>
 
             <Form onSubmit={handleClose}>
-                <label>First Name</label>
-                <input type='text' value={firstName} onChange={(event) => setFirstName(event.target.value)}></input>
-                <label>Last Name</label>
-                <input type='text' value={lastName} onChange={(e) => setLastName(e.target.value)}></input>
-                <label>Email</label>
-                <input type='email' value={email} onChange={(e) => setEmail(e.target.value)}></input>
-                <label>Username</label>
-                <input type='text' value={username} onChange={(e) => setUsername(e.target.value)}></input>
-                <label>Password</label>
-                <input type='password' value={password} onChange={(e) => setPassword(e.target.value)}></input>
-                <button type='submit' >Sign Up!</button>
+              <div className="input-group mb-3">
+              <span className="input-group-text">First name</span>
+              <input className="form-control" type='text' value={firstName} onChange={(event) => setFirstName(event.target.value)}></input>
+              </div>
+
+              <div className="input-group mb-3">
+              <span className="input-group-text">Last name</span>
+              <input className="form-control" type='text' value={lastName} onChange={(e) => setLastName(e.target.value)}></input>
+              </div>
+
+              <div className="input-group mb-3">
+              <span className="input-group-text">Email</span>
+              <input className="form-control" type='email' value={email} onChange={(e) => setEmail(e.target.value)}></input>
+              </div>
+
+              <div className="input-group mb-3">
+              <span className="input-group-text">Username</span>
+              <input className="form-control" type='text' value={username} onChange={(e) => setUsername(e.target.value)}></input>
+              </div>
+
+              <div className="input-group mb-3">
+              <span className="input-group-text">Password</span>
+              <input className="form-control" type='password' value={password} onChange={(e) => setPassword(e.target.value)}></input>
+              </div>
+
+              <div className="input-group mb-3">
+              <span className="input-group-text">Re-type Password</span>
+              <input className="form-control" type='password' value={passwordCheck} onChange={(e) => setPasswordCheck(e.target.value)}></input>
+              </div>
             </Form>
                         
             </Modal.Body>
             <Modal.Footer>
-              <Button variant="secondary" onClick={handleClose}>
+              <Button variant="secondary" onClick={resetForm}>
                 Close
               </Button>
               <Button type='submit' variant="primary" onClick={handleSubmit}>
-                Add
+                Sign Up!
               </Button>
             </Modal.Footer>
           </Modal>

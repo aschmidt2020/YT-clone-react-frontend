@@ -163,7 +163,7 @@ function App() {
 
   async function login(username, password) {
     debugger
-    let response = await axios({
+    await axios({
       method: 'post',
       url: 'http://127.0.0.1:8000/api/auth/login/',
       headers: {},
@@ -171,10 +171,13 @@ function App() {
         'username': username,
         'password': password
       }
-    })
-    debugger
-    localStorage.setItem('token', response.data.access);
-    window.location = '/';
+    }).then(response => {
+        localStorage.setItem('token', response.data.access);
+        window.location = '/';
+      }
+      ).catch(error => {
+        alert('Incorrect username or password. Please try again.')
+      })
   }
 
   async function logout() {
@@ -189,6 +192,11 @@ function App() {
       url: 'http://127.0.0.1:8000/api/auth/register/',
       headers: {},
       data: userInfo
+    }).then(response => {
+      alert('Account created! Please log-in.')
+    }
+    ).catch(error => {
+      alert('Account creation failed. Please enter all required fields.')
     })
 
   }
@@ -236,8 +244,12 @@ function App() {
         Authorization: 'Bearer ' + jwt
       },
       data: postRequest,
+    }).then(response => {
+      getComments(video);
+    }
+    ).catch(error => {
+      alert('Comment not able to be added at this time. Please try again later.')
     })
-    getComments(video);
   }
 
     async function deleteComment(comment){
@@ -248,8 +260,12 @@ function App() {
         headers: {
           Authorization: 'Bearer ' + jwt
         },
+      }).then(response => {
+        getComments(video);
+      }
+      ).catch(error => {
+        alert('Comment not able to be deleted at this time. Please try again later.')
       })
-      getComments(video);
     }
 
     async function updateComment(comment){
@@ -262,9 +278,12 @@ function App() {
           Authorization: 'Bearer ' + jwt
         },
         data: comment
-      });
-      debugger
-      getComments(video);
+      }).then(response => {
+        getComments(video);
+      }
+      ).catch(error => {
+        alert('Comment not able to be updated at this time. Please try again later.')
+      })
     }
 
    if(video !== undefined && playlist !== undefined && searchResults !== undefined){
