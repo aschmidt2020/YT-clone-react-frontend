@@ -11,7 +11,6 @@ const ReplyList = (props) => {
 
     
     async function getReplies(){
-        let token = localStorage.getItem('token');
         await axios({
             method: 'get',
             url: `http://127.0.0.1:8000/api/comments/replies/${props.comment.id}/`,
@@ -22,25 +21,12 @@ const ReplyList = (props) => {
 
     }
 
-    if(!props.user){
+    if(props.user != null){
         return (
             <span>
             {replies && replies.map((reply) => {
                 return(
-                    <div>
-                        <p>{reply.user.username}</p>
-                        <p>{reply.text}</p>
-                    </div>
-                )
-            })}
-            </span>
-        )
-    }
-    return ( 
-        <span>
-            {replies && replies.map((reply) => {
-                return(
-                    <div>
+                    <div id={reply.id}>
                         <p>{reply.user.username}</p>
                         <p>{reply.text}</p>
                         {props.user.user_id === reply.user.id &&
@@ -48,6 +34,21 @@ const ReplyList = (props) => {
                             <ReplyUpdate updateReply={props.updateReply} reply={reply} />
                             <button onClick={() => props.deleteReply(reply)}>Delete Reply</button>
                         </span>}
+                    </div>
+                )
+            })}
+            </span>
+        )
+    }
+    
+    
+    return ( 
+        <span>
+            {replies && replies.map((reply) => {
+                return(
+                    <div id={reply.id}>
+                        <p>{reply.user.username}</p>
+                        <p>{reply.text}</p>
                     </div>
                 )
             })}

@@ -18,8 +18,8 @@ const VideoPlayer = (props) => {
     return (
         <div className='container'>
             <div className='row'>
-                <div className='col'>
-                    <iframe id="ytplayer" type="text/html" width="640" height="360"
+                <div className='col' style={{'marginTop':'2em'}}>
+                    <iframe id="ytplayer" type="text/html" width="640" height="360" textAlign="center"
                     src={videoURL} frameBorder="0"></iframe>
                     {'snippet' in props.video 
                         ?  <h3>{props.video.snippet.title}</h3>
@@ -42,12 +42,10 @@ const VideoPlayer = (props) => {
                 </div>
 
             </div>
-            <div className='row'>
-                <CommentList user={props.user}
+            <div className='row' style={{'marginTop':'2em'}}>
+                <CommentList user={props.user} videoId={props.video.id.videoId} addComment={props.addComment}
                 comments={props.comments} deleteComment={props.deleteComment} updateComment={props.updateComment}
                 addReply={props.addReply} deleteReply={props.deleteReply} updateReply={props.updateReply}/>
-                {props.user && 
-                <CommentForm videoId={props.video.id.videoId} addComment={props.addComment}/>}
             </div>
         </div>
     );

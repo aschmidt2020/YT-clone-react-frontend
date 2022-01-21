@@ -3,14 +3,13 @@ import React, { useState } from 'react';
 const RelatedVideos = (props) => {
     return (
         <div>
-            <h4>Related videos: </h4>
+            <h4 style={{'marginBottom':'-1em'}}>Related videos: </h4>
             <table className="table table-sm table-striped table-hover text-align-center" style={{'marginTop' : '2em'}}>
             <thead>
             <tr>
                 <th>#</th>
                 <th>Video Title</th>
                 <th>Video Description</th>
-                <th>Watch Video</th>
             </tr>
             </thead>
             <tbody>

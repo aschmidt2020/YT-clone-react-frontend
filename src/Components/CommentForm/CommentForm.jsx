@@ -20,8 +20,7 @@ const CommentForm = (props) => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-                <label>Comment</label>
+            <form onSubmit={handleSubmit} style={{'marginLeft':'3em', 'marginBottom':'1em'}}>
                 <input type='text' value={comment} onChange={(e) => setComment(e.target.value)}></input>
                 <button type='submit'>Add Comment</button>
             </form>

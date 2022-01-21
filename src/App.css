@@ -12,3 +12,28 @@
 .navbar-welcome-text {
     font-size: 20px;
 }
+
+.border-box {
+    border: 1px;
+    border-style: solid;
+    border-color: black;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-left: 1em;
+    border-radius: 1em;
+    margin-bottom: 1em;
+}
+
+.btn:focus {
+    box-shadow: none !important;
+    -webkit-box-shadow: none!important; 
+}
+
+.comment-reply-header {
+    font-size: larger;
+    font-weight: bold;
+}
+
+ul {
+    list-style: none;
+}
