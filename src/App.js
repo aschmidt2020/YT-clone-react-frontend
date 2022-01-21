@@ -150,6 +150,7 @@ function App() {
   );
 
   const [comments, setComments] = useState([]);
+  const [userInfo, setUserInfo] = useState([]);
 
   useEffect(() => {
     //pageLoad();
@@ -157,8 +158,8 @@ function App() {
     try {
       const decodedUser = jwt_decode(tokenFromStorage);
       setUser(decodedUser);
+      getUserInfo(decodedUser, tokenFromStorage);
     } catch { }
-    debugger
   }, [])
 
   async function login(username, password) {
@@ -178,6 +179,19 @@ function App() {
       ).catch(error => {
         alert('Incorrect username or password. Please try again.')
       })
+  }
+
+  async function getUserInfo(user, token) {
+
+    await axios({
+      method: 'get',
+      url: `http://127.0.0.1:8000/api/comments/user/${user.user_id}/`,
+      headers: {
+        Authorization: 'Bearer ' + token
+      },
+    }).then(response => {
+      setUserInfo(response.data);
+    })
   }
 
   async function logout() {
@@ -290,7 +304,7 @@ function App() {
      return (
        <div>
          <div className='container'>
-         <NavBar user={user} universalSearch={universalSearch} login={login} logout={logout} register={register}/>
+         <NavBar user={user} userInfo={userInfo} universalSearch={universalSearch} login={login} logout={logout} register={register}/>
          <Routes>
            <Route exact path='/' element={<HomePage universalSearch={universalSearch} video={video} playlist={playlist.items} getVideo={getVideo} searchResults={searchResults.items} getVideo={getVideo}/>} />
            <Route path='/register' element={<RegistrationForm register={register}/>} />

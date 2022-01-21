@@ -21,7 +21,7 @@ const NavBar = (props) => {
 
                     <div className='col-8'>
                         <h4 style={{'marginBottom':'0em'}}>OurTube</h4>
-                        {props.user && <span className='navbar-welcome-text'>Welcome {props.user.user_id}!</span>}
+                        {props.user && <span className='navbar-welcome-text'>Welcome {props.userInfo.username}!</span>}
                         {!props.user && <span className='navbar-welcome-text'>Please log-in.</span>}
                     </div>
                 </div>
