@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 const RegistrationForm = (props) => {
 
@@ -9,10 +10,10 @@ const RegistrationForm = (props) => {
     const [email, setEmail] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
-    // const [show, setShow] = useState(false);
+    const [show, setShow] = useState(false);
 
-    // const handleClose = () => setShow(false);
-    // const handleShow = () => setShow(true);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     function resetForm() {
         setUsername('');
@@ -41,7 +42,7 @@ const RegistrationForm = (props) => {
 
     return (
         <div id="sign-up">
-            {/* <Button variant="btn btn-outline-secondary" onClick={handleShow}>
+            <Button variant="btn btn-outline-secondary" onClick={handleShow}>
           Register Here
           </Button>
 
@@ -50,9 +51,9 @@ const RegistrationForm = (props) => {
               <Modal.Title>Register</Modal.Title>
             </Modal.Header>
 
-            <Modal.Body> */}
+            <Modal.Body>
 
-            <form onSubmit={handleSubmit}>
+            <Form onSubmit={handleClose}>
                 <label>First Name</label>
                 <input type='text' value={firstName} onChange={(event) => setFirstName(event.target.value)}></input>
                 <label>Last Name</label>
@@ -64,18 +65,18 @@ const RegistrationForm = (props) => {
                 <label>Password</label>
                 <input type='password' value={password} onChange={(e) => setPassword(e.target.value)}></input>
                 <button type='submit' >Sign Up!</button>
-            </form>
-            {/*             
+            </Form>
+                        
             </Modal.Body>
             <Modal.Footer>
-              <Button variant="secondary" onClick={resetForm}>
+              <Button variant="secondary" onClick={handleClose}>
                 Close
               </Button>
               <Button type='submit' variant="primary" onClick={handleSubmit}>
                 Add
               </Button>
             </Modal.Footer>
-          </Modal> */}
+          </Modal>
         </div>
 
     );

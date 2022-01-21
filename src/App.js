@@ -217,10 +217,12 @@ function App() {
   }
 
   function getVideo(video) {
+    debugger
     setVideo(video);
     getPlaylist(video);
-    navigate('/video');
     getComments(video);
+    navigate('/video');
+    debugger
   }
 
   async function addComment(postRequest) {

@@ -10,7 +10,7 @@ const NavBar = (props) => {
             <i className="bi bi-list"></i>
             </a>
 
-            <div className="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+            <div className="offcanvas offcanvas-start" tabIndex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
             <div className="offcanvas-header">
                 <h5 className="offcanvas-title" id="offcanvasExampleLabel">Navigation Bar</h5>
                 <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -47,3 +47,6 @@ const NavBar = (props) => {
 }
  
 export default NavBar;
+
+//<Link to='/register'>Register</Link>
+//<RegistrationForm register={props.register}/>
