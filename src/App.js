@@ -301,6 +301,58 @@ function App() {
       })
     }
 
+    async function addReply(postRequest, commentId) {
+      const jwt = localStorage.getItem('token');
+      await axios({
+        method: 'post',
+        url: `http://127.0.0.1:8000/api/comments/replies/${commentId}/`,
+        headers: {
+          Authorization: 'Bearer ' + jwt
+        },
+        data: postRequest,
+      }).then(response => {
+        getComments(video);
+      }
+      ).catch(error => {
+        alert('Reply not able to be added at this time. Please try again later.')
+      })
+    }
+
+    async function deleteReply(reply){
+      const jwt = localStorage.getItem('token');
+      await axios({
+        method: 'delete',
+        url: `http://127.0.0.1:8000/api/comments/deletereply/${reply.id}/`,
+        headers: {
+          Authorization: 'Bearer ' + jwt
+        },
+      }).then(response => {
+        getComments(video);
+      }
+      ).catch(error => {
+        alert('Reply not able to be deleted at this time. Please try again later.')
+      })
+    }
+
+    async function updateReply(reply){
+
+      const jwt = localStorage.getItem('token');
+      debugger
+      await axios({
+        method: 'put',
+        url: `http://127.0.0.1:8000/api/comments/editreply/${reply.id}/`,
+        headers: {
+          Authorization: 'Bearer ' + jwt
+        },
+        data: reply
+      }).then(response => {
+        getComments(video);
+      }
+      ).catch(error => {
+        alert('Comment not able to be updated at this time. Please try again later.')
+      })
+    }
+
    if(video !== undefined && playlist !== undefined && searchResults !== undefined){
      return (
        <div>
@@ -309,7 +361,10 @@ function App() {
          <Routes>
            <Route exact path='/' element={<HomePage universalSearch={universalSearch} video={video} playlist={playlist.items} getVideo={getVideo} searchResults={searchResults.items} getVideo={getVideo}/>} />
            <Route path='/register' element={<RegistrationForm register={register}/>} />
-           <Route path='/video' element={<VideoPlayer user={user} comments={comments} deleteComment={deleteComment} updateComment={updateComment} addComment={addComment} universalSearch={universalSearch} video={video} playlist={playlist.items} getVideo={getVideo}/>}/>
+           <Route path='/video' element={<VideoPlayer user={user} 
+           comments={comments} deleteComment={deleteComment} updateComment={updateComment} addComment={addComment} 
+           addReply={addReply} deleteReply={deleteReply} updateReply={updateReply}
+          universalSearch={universalSearch} video={video} playlist={playlist.items} getVideo={getVideo}/>}/>
            <Route path='/search' element={<SearchResults  universalSearch={universalSearch} searchResults={searchResults.items} getVideo={getVideo}/>} />
          </Routes>
          </div>

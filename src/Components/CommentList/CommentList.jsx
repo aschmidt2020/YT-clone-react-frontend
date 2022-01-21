@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import CommentUpdate from '../CommentUpdate/CommentUpdate';
 import LikeDislikeButton from '../LikeDislikeButton/LikeDislikeButton';
+import ReplyList from '../ReplyList/ReplyList';
+import ReplyForm from '../ReplyForm/ReplyForm';
 
 const CommentList = (props) => {
 
@@ -20,15 +22,20 @@ const CommentList = (props) => {
                 <tr key={comment.id}>
                     <td>{comment.user.username}</td>
                     <td>{comment.text}</td>
+            
                     <td>{props.user.user_id === comment.user.id
                     ? <span>
                         <CommentUpdate comment={comment} updateComment={props.updateComment}/>
                         <button style={{'marginLeft': '1em'}} className="btn btn-outline-secondary" onClick={() => props.deleteComment(comment)}
                         data-toggle='popover' title='Delete Comment' data-content='Delete Comment' trigger='hover'>&nbsp;<i className="bi bi-trash">&nbsp;&nbsp;</i></button>
                     </span> 
-                    : <span><LikeDislikeButton comment={comment} updateComment={props.updateComment} /></span>
+                    : <span>
+                        <ReplyList user={props.user} comment={comment} deleteReply={props.deleteReply} updateReply={props.updateReply}/>
+                        <ReplyForm comment={comment} addReply={props.addReply}/>
+                        <LikeDislikeButton comment={comment} updateComment={props.updateComment} /></span>
                     }
                     </td>
+                
             </tr>
                     
             )}
