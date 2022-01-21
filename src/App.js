@@ -10,6 +10,7 @@ import NavBar from './Components/NavBar/NavBar';
 import HomePage from './Components/HomePage/HomePage';
 import jwt_decode from 'jwt-decode';
 import RegistrationForm from './Components/RegistrationForm/RegistrationForm';
+import './App.css'
 
 function App() {
   const API_KEY = process.env.REACT_APP_API_KEY_YT;
@@ -209,6 +210,7 @@ function App() {
     let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${searchTerm}&key=${API_KEY}`);
     setSearchResults(response.data);
     setVideo(response.data.items[0]);
+    navigate('/search');
   }
 
   async function getComments(video) {

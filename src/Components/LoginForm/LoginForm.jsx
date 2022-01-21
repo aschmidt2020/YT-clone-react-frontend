@@ -1,9 +1,20 @@
 import React, { useState } from "react";
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 
 const LoginForm = (props) => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [show, setShow] = useState(false);
+
+    const handleShow = () => setShow(true);
+
+    function handleClose () {
+        setShow(false);
+        setUsername('');
+        setPassword('');
+    }
 
     function handleSubmit(e) {
         debugger
@@ -12,15 +23,36 @@ const LoginForm = (props) => {
     }
 
     return (
-        <div className="log-in">
-            <form onSubmit={handleSubmit}>
+        <span id='log-in'>
+        <Button variant="btn btn-outline-primary" onClick={handleShow} style={{'marginLeft':'6em'}}>
+        Log In
+        </Button>
+
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Log In</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+
+          <form onSubmit={handleSubmit}>
                 <label>Username</label>
                 <input type='text' value={username} onChange={(e) => setUsername(e.target.value)}></input>
                 <label>Password</label>
                 <input type='password' value={password} onChange={(e) => setPassword(e.target.value)}></input>
-                <button type='submit' >Login</button>
+                <button type='submit'>Login</button>
             </form>
-        </div>
+          
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+            <Button type='submit' variant="primary" onClick={handleSubmit}>
+              Update
+            </Button>
+          </Modal.Footer>
+        </Modal>
+  </span>
     );
 
 }

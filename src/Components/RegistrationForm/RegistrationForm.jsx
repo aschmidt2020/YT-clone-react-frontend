@@ -21,7 +21,7 @@ const RegistrationForm = (props) => {
         setEmail('');
         setFirstName('');
         setLastName('');
-        //handleClose();
+        handleClose();
     }
 
     function handleSubmit(e) {
@@ -41,9 +41,9 @@ const RegistrationForm = (props) => {
     }
 
     return (
-        <div id="sign-up">
-            <Button variant="btn btn-outline-secondary" onClick={handleShow}>
-          Register Here
+        <span id="sign-up">
+          <Button variant="btn btn-outline-secondary" onClick={handleShow} style={{'marginLeft':'1em'}}>
+          Register
           </Button>
 
           <Modal show={show} onHide={resetForm}>
@@ -77,7 +77,7 @@ const RegistrationForm = (props) => {
               </Button>
             </Modal.Footer>
           </Modal>
-        </div>
+        </span>
 
     );
 

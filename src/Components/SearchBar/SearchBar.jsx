@@ -11,10 +11,15 @@ const SearchBar = (props) => {
     }
     
     return (
-        <form onSubmit={handleSubmit}>
-            <input type="search" placeholder="Search" aria-label="Search" value={searchTerm} onChange={(event) => setSearchTerm(event.target.value)} />
-            <button type='submit'>Search</button>
-        </form>
+            <form className='row' onSubmit={handleSubmit} style={{'marginLeft':'10em', 'width':'60%'}}>
+                <div className='col-10' style={{'marginRight':'-1em'}}>
+                    <input className='form-control' type="search" placeholder="Search" aria-label="Search" value={searchTerm} onChange={(event) => setSearchTerm(event.target.value)} />
+                </div>
+
+                <div className='col-2'>
+                    <button type="submit" className="btn btn-primary" data-toggle='popover' title='Search' data-content='Search' trigger='hover'><i className="bi bi-search"></i></button>
+                </div>
+            </form>
     );
 }
  

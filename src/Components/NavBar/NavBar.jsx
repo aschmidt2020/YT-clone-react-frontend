@@ -2,46 +2,41 @@ import { Link } from 'react-router-dom';
 import LoginForm from '../LoginForm/LoginForm';
 import RegistrationForm from '../RegistrationForm/RegistrationForm';
 import SearchBar from '../SearchBar/SearchBar';
+import logo from '../Images/YouTubeCloneLogo.png'
 
 const NavBar = (props) => {
     return (
         <div>
-            <a className="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-            <i className="bi bi-list"></i>
-            </a>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div className="container-fluid">
+            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <Link to='/' className="navbar-brand" ><a data-toggle='popover' title='Home' data-content='Home' trigger='hover'>
+                <div className='row'>
+                    <div className='col-4'>
+                         <img src={logo} style={{'height':'40px', 'width':'40px','marginTop':'0.4em'}} />
+                    </div>
 
-            <div className="offcanvas offcanvas-start" tabIndex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-            <div className="offcanvas-header">
-                <h5 className="offcanvas-title" id="offcanvasExampleLabel">Navigation Bar</h5>
-                <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div className="offcanvas-body">
-                {props.user && <h1>Welcome {props.user.user_id}!</h1>}
-                {!props.user && <h1>Please log-in.</h1>}
-                <nav>
-                <ul>
-                    <li><SearchBar universalSearch={props.universalSearch}/></li>
-                    <Link to='/'><li>Home/Search</li></Link>
-                    <Link to='/video'><li>VideoPlayer</li></Link>
-                    <Link to='/search'><li>Search Results</li></Link>
-                </ul>
-                </nav>
-                {/* <div className="dropdown mt-3">
-                <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
-                    Dropdown button
-                </button>
-                <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <li><a className="dropdown-item" href="#">Action</a></li>
-                    <li><a className="dropdown-item" href="#">Another action</a></li>
-                    <li><a className="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-                </div> */}
-                <div>
-                    {!props.user && <div> <LoginForm login={props.login}/> <Link to='/register'>Register</Link> </div>}
-                    {props.user && <button onClick={props.logout}>Log Out</button>}
+                    <div className='col-8'>
+                        <h4 style={{'marginBottom':'0em'}}>OurTube</h4>
+                        {props.user && <span className='navbar-welcome-text'>Welcome {props.user.user_id}!</span>}
+                        {!props.user && <span className='navbar-welcome-text'>Please log-in.</span>}
+                    </div>
                 </div>
+
+            </a>
+            </Link>
+                
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0" style={{'width':'100%'}}>
+                <SearchBar universalSearch={props.universalSearch}/>
+                {!props.user && <span> <LoginForm login={props.login}/> <RegistrationForm register={props.register}/> </span>}
+                {props.user && <button type='button' className='btn btn-outline-danger' onClick={props.logout}>Log Out</button>}
+            </ul>
             </div>
-            </div>
+        </div>
+        </nav>
         </div>
     );
 }
