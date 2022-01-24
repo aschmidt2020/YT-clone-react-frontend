@@ -12,6 +12,7 @@ const RegistrationForm = (props) => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [show, setShow] = useState(false);
+    const [passwordError, setPasswordError] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -19,11 +20,23 @@ const RegistrationForm = (props) => {
     function resetForm() {
         setUsername('');
         setPassword('');
+        setPasswordCheck('');
         setEmail('');
         setFirstName('');
         setLastName('');
+        setPasswordError(false);
         handleClose();
     }
+
+    // function validateEmail(mail) 
+    //   {
+    //   if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(myForm.emailAddr.value))
+    //     {
+    //       return (true)
+    //     }
+    //       alert("You have entered an invalid email address!")
+    //       return (false)
+    //   }
 
     function handleSubmit(e) {
         debugger
@@ -39,9 +52,13 @@ const RegistrationForm = (props) => {
           props.register(userInfo);
           debugger
           resetForm();
+          setPasswordError(false);
         }
         else {
-          alert('Passwords must match.')
+          alert('Passwords must match.');
+          setPasswordError(true);
+          setPassword('');
+          setPasswordCheck('');
         }
     }
 
@@ -79,15 +96,32 @@ const RegistrationForm = (props) => {
               <input className="form-control" type='text' value={username} onChange={(e) => setUsername(e.target.value)}></input>
               </div>
 
-              <div className="input-group mb-3">
-              <span className="input-group-text">Password</span>
-              <input className="form-control" type='password' value={password} onChange={(e) => setPassword(e.target.value)}></input>
-              </div>
+              {!passwordError && 
+                <div className="input-group mb-3">
+                <span className="input-group-text">Password</span>
+                <input className="form-control" type='password' value={password} onChange={(e) => setPassword(e.target.value)}></input>
+                </div>
+              }
+              {passwordError && 
+                <div className="input-group mb-3">
+                  <span className="input-group-text">Password</span>
+                  <input className="form-control is-invalid" type='password' value={password} onChange={(e) => setPassword(e.target.value)}></input>
+                </div>
+              }
 
-              <div className="input-group mb-3">
-              <span className="input-group-text">Re-type Password</span>
-              <input className="form-control" type='password' value={passwordCheck} onChange={(e) => setPasswordCheck(e.target.value)}></input>
-              </div>
+              {!passwordError &&
+                  <div className="input-group mb-3">
+                  <span className="input-group-text">Re-type Password</span>
+                  <input className="form-control" type='password' value={passwordCheck} onChange={(e) => setPasswordCheck(e.target.value)}></input>
+                  </div>
+                  }
+              {passwordError &&
+                  <div className="input-group mb-3">
+                  <span className="input-group-text">Re-type Password</span>
+                  <input className="form-control is-invalid" type='password' value={passwordCheck} onChange={(e) => setPasswordCheck(e.target.value)}></input>
+                  </div>
+                }
+
             </Form>
                         
             </Modal.Body>
