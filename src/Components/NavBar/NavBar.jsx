@@ -13,7 +13,7 @@ const NavBar = (props) => {
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-                        <Link to="/" className="navbar-brand" ><a data-toggle="popover" title="Home" data-content="Home" trigger="hover">
+                        <Link to="/" className="navbar-brand" data-toggle="popover" title="Home" data-content="Home" trigger="hover">
                             <div className="row">
                                 <div className="col-4">
                                     <img src={logo} style={{ "height": "40px", "width": "40px", "marginTop": "0.4em" }} />
@@ -25,8 +25,6 @@ const NavBar = (props) => {
                                     {!props.user && <span className="navbar-welcome-text">Please log-in.</span>}
                                 </div>
                             </div>
-
-                        </a>
                         </Link>
 
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0" style={{ "width": "100%" }}>
