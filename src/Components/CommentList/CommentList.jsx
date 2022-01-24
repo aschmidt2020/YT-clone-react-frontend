@@ -16,7 +16,7 @@ const CommentList = (props) => {
                     {props.user && 
                     <CommentForm videoId={props.videoId} addComment={props.addComment}/>}
                 </span>
-            <ul>
+            <ol>
                 {props.comments && props.comments.map((comment) => {
                     return (
                     <li className='border-box' key={comment.id}>
@@ -50,7 +50,7 @@ const CommentList = (props) => {
                     
                     )}
                     )}
-                </ul>
+                </ol>
             </div>
         )
     }
@@ -59,7 +59,7 @@ const CommentList = (props) => {
             <span>
                 <span className='comment-reply-header' style={{'marginLeft':'2em'}}>Comments: </span>
             </span>
-           <ul>
+           <ol>
             {props.comments && props.comments.map((comment) => {
                 return (
                 <li className='border-box' key={comment.id}>
@@ -72,7 +72,7 @@ const CommentList = (props) => {
                     
             )}
             )}
-           </ul>
+           </ol>
 
         </div>
      );

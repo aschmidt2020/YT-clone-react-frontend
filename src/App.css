@@ -34,8 +34,10 @@
     font-weight: bold;
 }
 
-ul {
+ol {
     list-style: none;
+    display: flex;
+    flex-direction: column-reverse;
 }
 
 .related-video-text {
@@ -57,7 +59,7 @@ ul {
     top: 25%;
     position: absolute;
     font-size:4em;
-    color:grey;
+    color:#f9f9f9;
 
 }
 
@@ -81,4 +83,8 @@ ul {
 
 .play-button-small:hover {
     color: red;
+}
+
+.btn.btn-link {
+    color: grey;
 }

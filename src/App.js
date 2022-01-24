@@ -324,7 +324,7 @@ function App() {
 
     async function deleteReply(reply){
       // eslint-disable-next-line no-restricted-globals
-      let approveDelete = confirm(`Are you sure you would like to delete this reply?\n\nUser: ${reply.user.username}\Reply:${reply.text}\n\nOK for yes. Cancel for no.`)
+      let approveDelete = confirm(`Are you sure you would like to delete this reply?\n\nUser: ${reply.user.username}\nReply:${reply.text}\n\nOK for yes. Cancel for no.`)
       if(approveDelete){
         const jwt = localStorage.getItem('token');
         await axios({
