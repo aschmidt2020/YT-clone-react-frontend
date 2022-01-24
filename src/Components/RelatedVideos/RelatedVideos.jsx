@@ -16,7 +16,12 @@ const RelatedVideos = (props) => {
                 if('snippet' in result){
                     return (
                         <tr key={result.id.videoId}>
-                            <td><button onClick={() => props.getVideo(result)} data-toggle='popover' title='Watch' data-content='Watch' trigger='hover'><img src={result.snippet.thumbnails.default.url} /></button></td>
+                            <td className="text-center"><button className="btn btn-light" onClick={() => props.getVideo(result)} data-toggle='popover' title='Watch' data-content='Watch' trigger='hover'>
+                                <div className='video-thumbnail-small'>
+                                    <img src={result.snippet.thumbnails.default.url} />
+                                    <i className="play-button-small bi bi-play" role='img'></i>
+                                </div>
+                                </button></td>
                             <td>
                             <h6 style={{'marginBottom':'0'}}>{result.snippet.title}</h6>
                             <p className='related-video-text'>{result.snippet.description.substring(0,100)}</p>

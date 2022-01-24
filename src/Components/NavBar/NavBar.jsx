@@ -42,6 +42,3 @@ const NavBar = (props) => {
 }
  
 export default NavBar;
-
-//<Link to='/register'>Register</Link>
-//<RegistrationForm register={props.register}/>

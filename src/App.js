@@ -367,7 +367,6 @@ function App() {
          <NavBar user={user} userInfo={userInfo} universalSearch={universalSearch} login={login} logout={logout} register={register}/>
          <Routes>
            <Route exact path='/' element={<HomePage universalSearch={universalSearch} video={video} playlist={playlist.items} getVideo={getVideo} searchResults={searchResults.items} getVideo={getVideo}/>} />
-           <Route path='/register' element={<RegistrationForm register={register}/>} />
            <Route path='/video' element={<VideoPlayer user={user} 
            comments={comments} deleteComment={deleteComment} updateComment={updateComment} addComment={addComment} 
            addReply={addReply} deleteReply={deleteReply} updateReply={updateReply}
