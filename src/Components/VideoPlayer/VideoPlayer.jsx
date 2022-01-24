@@ -18,8 +18,8 @@ const VideoPlayer = (props) => {
     return (
         <div className='container'>
             <div className='row'>
-                <div className='col' style={{'marginTop':'2em'}}>
-                    <iframe id="ytplayer" type="text/html" width="640" height="360" textAlign="center"
+                <div className='col-8' style={{'marginTop':'2em'}}>
+                    <iframe id="ytplayer" type="text/html" width="849" height="478" textAlign="center"
                     src={videoURL} frameBorder="0"></iframe>
                     {'snippet' in props.video 
                         ?  <h3>{props.video.snippet.title}</h3>
@@ -30,14 +30,14 @@ const VideoPlayer = (props) => {
                         ? <p>{props.video.snippet.description}</p>
                         : <p>NO SNIPPET AVAILABLE</p>)
                     : ('snippet' in props.video 
-                        ? <span>{props.video.snippet.description.substring(0,100)}</span>
+                        ? <span>{props.video.snippet.description.substring(0,100)}...</span>
                         : <p>NO SNIPPET AVAILABLE</p>
                     )
                         }
-                        <button type="button" className="btn btn-link" onClick={handleDesc}>show full description</button>
+                        <span style={{'marginLeft':'-0.75em'}}><button type="button" className="btn btn-link" onClick={handleDesc}>toggle full description</button></span>
 
                 </div>
-                <div className='col'>
+                <div className='col-4'>
                     <RelatedVideos playlist={props.playlist} getVideo={props.getVideo} />
                 </div>
 

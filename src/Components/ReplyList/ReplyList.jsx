@@ -4,6 +4,7 @@ import ReplyUpdate from '../ReplyUpdate/ReplyUpdate';
 
 const ReplyList = (props) => {
     const [replies, setReplies] = useState([]);
+    const [showReplies, setShowReplies] = useState(false);
 
     useEffect(() => {
         getReplies();
@@ -25,17 +26,25 @@ const ReplyList = (props) => {
         return (
             <span>
             {replies && replies.map((reply) => {
-                return(
-                    <div id={reply.id}>
-                        <p>{reply.user.username}</p>
-                        <p>{reply.text}</p>
-                        {props.user.user_id === reply.user.id &&
-                        <span>
-                            <ReplyUpdate updateReply={props.updateReply} reply={reply} />
-                            <button onClick={() => props.deleteReply(reply)}>Delete Reply</button>
-                        </span>}
-                    </div>
-                )
+                if(showReplies){
+                    return(
+                        <div id={reply.id}>
+                            <button style={{'width':'10%', 'marginBottom':'0.5em'}}type="button" className="btn btn-secondary" onClick={() => setShowReplies(!showReplies)}>Replies</button>
+                            <h5>{reply.user.username}</h5>
+                            <p>{reply.text}</p>
+                            {props.user.user_id === reply.user.id &&
+                            <span>
+                                <ReplyUpdate updateReply={props.updateReply} reply={reply} />
+                                <button onClick={() => props.deleteReply(reply)}>Delete Reply</button>
+                            </span>}
+                        </div>
+                    )
+                }
+                else{
+                    return(
+                        <button style={{'width':'10%', 'marginBottom':'0.5em'}}type="button" className="btn btn-secondary" onClick={() => setShowReplies(!showReplies)}>Replies</button>
+                    )
+                }
             })}
             </span>
         )
@@ -45,12 +54,20 @@ const ReplyList = (props) => {
     return ( 
         <span>
             {replies && replies.map((reply) => {
-                return(
-                    <div id={reply.id}>
-                        <p>{reply.user.username}</p>
-                        <p>{reply.text}</p>
-                    </div>
-                )
+                if(showReplies){
+                    return(
+                        <div id={reply.id}>
+                            <button style={{'width':'10%', 'marginBottom':'0.5em'}}type="button" className="btn btn-secondary" onClick={() => setShowReplies(!showReplies)}>Replies</button>
+                            <h5>{reply.user.username}<small className='text-muted fst-italic'> reply</small></h5>
+                            <p>{reply.text}</p>
+                        </div>
+                    )
+                }
+                else{
+                    return(
+                        <button style={{'width':'10%', 'marginBottom':'0.5em'}}type="button" className="btn btn-secondary" onClick={() => setShowReplies(!showReplies)}>Replies</button>
+                    )
+                }
             })}
             </span>
     );
