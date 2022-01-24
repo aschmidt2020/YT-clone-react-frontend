@@ -18,10 +18,9 @@ const ReplyForm = (props) => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-                <label>Reply</label>
-                <input type='text' value={reply} onChange={(e) => setReply(e.target.value)}></input>
-                <button type='submit'>Add Reply</button>
+            <form onSubmit={handleSubmit} style={{'marginTop':'1em'}}>
+                <input type='text' placeholder="Reply..." value={reply} onChange={(e) => setReply(e.target.value)}></input>
+                <button style={{'marginTop':'-0.2em', 'marginLeft':'0.5em'}} type='submit' className="btn btn-secondary">Add Reply</button>
             </form>
         </div>
     );

@@ -267,19 +267,23 @@ function App() {
   }
 
     async function deleteComment(comment){
-      const jwt = localStorage.getItem('token');
-      await axios({
-        method: 'delete',
-        url: `http://127.0.0.1:8000/api/comments/deletecomment/${comment.id}/`,
-        headers: {
-          Authorization: 'Bearer ' + jwt
-        },
-      }).then(response => {
-        getComments(video);
+      // eslint-disable-next-line no-restricted-globals
+      let approveDelete = confirm(`Are you sure you would like to delete this comment?\n\nUser: ${comment.user.username}\nComment:${comment.text}\n\nOK for yes. Cancel for no.`)
+      if(approveDelete){
+        const jwt = localStorage.getItem('token');
+        await axios({
+          method: 'delete',
+          url: `http://127.0.0.1:8000/api/comments/deletecomment/${comment.id}/`,
+          headers: {
+            Authorization: 'Bearer ' + jwt
+          },
+        }).then(response => {
+          getComments(video);
+        }
+        ).catch(error => {
+          alert('Comment not able to be deleted at this time. Please try again later.')
+        })
       }
-      ).catch(error => {
-        alert('Comment not able to be deleted at this time. Please try again later.')
-      })
     }
 
     async function updateComment(comment){
@@ -319,20 +323,24 @@ function App() {
     }
 
     async function deleteReply(reply){
-      const jwt = localStorage.getItem('token');
-      await axios({
-        method: 'delete',
-        url: `http://127.0.0.1:8000/api/comments/deletereply/${reply.id}/`,
-        headers: {
-          Authorization: 'Bearer ' + jwt
-        },
-      }).then(response => {
-        getComments(video);
+      // eslint-disable-next-line no-restricted-globals
+      let approveDelete = confirm(`Are you sure you would like to delete this reply?\n\nUser: ${reply.user.username}\Reply:${reply.text}\n\nOK for yes. Cancel for no.`)
+      if(approveDelete){
+        const jwt = localStorage.getItem('token');
+        await axios({
+          method: 'delete',
+          url: `http://127.0.0.1:8000/api/comments/deletereply/${reply.id}/`,
+          headers: {
+            Authorization: 'Bearer ' + jwt
+          },
+        }).then(response => {
+          getComments(video);
+        }
+        ).catch(error => {
+          alert('Reply not able to be deleted at this time. Please try again later.')
+        })
       }
-      ).catch(error => {
-        alert('Reply not able to be deleted at this time. Please try again later.')
-      })
-    }
+      }
 
     async function updateReply(reply){
       const jwt = localStorage.getItem('token');

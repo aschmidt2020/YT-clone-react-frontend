@@ -29,20 +29,32 @@ const ReplyList = (props) => {
                 if(showReplies){
                     return(
                         <div id={reply.id}>
-                            <button style={{'width':'10%', 'marginBottom':'0.5em'}}type="button" className="btn btn-secondary" onClick={() => setShowReplies(!showReplies)}>Replies</button>
-                            <h5>{reply.user.username}</h5>
-                            <p>{reply.text}</p>
-                            {props.user.user_id === reply.user.id &&
-                            <span>
-                                <ReplyUpdate updateReply={props.updateReply} reply={reply} />
-                                <button onClick={() => props.deleteReply(reply)}>Delete Reply</button>
-                            </span>}
+                            <button type="button" style={{'marginLeft':'-0.75em'}} className="btn btn-link" onClick={() => setShowReplies(!showReplies)}>Show Replies</button>
+                            <div className='row'>
+                                <div className='col-2'>
+                                    <h5>{reply.user.username}<small className='text-muted fst-italic'> reply</small></h5>
+                                    <p>{reply.text}</p>
+                                </div>
+
+                                <div className='col-2'>
+                                    {props.user.user_id === reply.user.id &&
+                                    <span>
+                                        <ReplyUpdate updateReply={props.updateReply} reply={reply} />
+                                        <button style={{'marginLeft': '1em','marginTop':'1em'}} className="btn btn-outline-secondary" onClick={() => props.deleteReply(reply)} data-toggle='popover' title='Delete Reply' data-content='Delete Reply' trigger='hover'><i className="bi bi-trash" /></button>
+                                    </span>}
+                                </div>
+                                
+                                <div className='col-8'>
+                                    {/* empty column for spacing */}
+                                </div>
+
+                            </div>
                         </div>
                     )
                 }
                 else{
                     return(
-                        <button style={{'width':'10%', 'marginBottom':'0.5em'}}type="button" className="btn btn-secondary" onClick={() => setShowReplies(!showReplies)}>Replies</button>
+                        <button type="button" style={{'marginLeft':'-0.75em'}} className="btn btn-link" onClick={() => setShowReplies(!showReplies)}>Show Replies</button>
                     )
                 }
             })}
@@ -57,7 +69,7 @@ const ReplyList = (props) => {
                 if(showReplies){
                     return(
                         <div id={reply.id}>
-                            <button style={{'width':'10%', 'marginBottom':'0.5em'}}type="button" className="btn btn-secondary" onClick={() => setShowReplies(!showReplies)}>Replies</button>
+                            <button type="button" style={{'marginLeft':'-0.75em'}} className="btn btn-link" onClick={() => setShowReplies(!showReplies)}>Show Replies</button>
                             <h5>{reply.user.username}<small className='text-muted fst-italic'> reply</small></h5>
                             <p>{reply.text}</p>
                         </div>
@@ -65,7 +77,7 @@ const ReplyList = (props) => {
                 }
                 else{
                     return(
-                        <button style={{'width':'10%', 'marginBottom':'0.5em'}}type="button" className="btn btn-secondary" onClick={() => setShowReplies(!showReplies)}>Replies</button>
+                        <button type="button" style={{'marginLeft':'-0.75em'}} className="btn btn-link" onClick={() => setShowReplies(!showReplies)}>Show Replies</button>
                     )
                 }
             })}

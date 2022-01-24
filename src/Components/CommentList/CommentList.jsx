@@ -12,17 +12,21 @@ const CommentList = (props) => {
         return (
             <div>
                 <span>
-                    <span className='comment-reply-header'>Comments: </span>
+                    <span className='comment-reply-header' style={{'marginLeft':'2em'}}>Comments: </span>
                     {props.user && 
-                <CommentForm videoId={props.videoId} addComment={props.addComment}/>}
+                    <CommentForm videoId={props.videoId} addComment={props.addComment}/>}
                 </span>
             <ul>
                 {props.comments && props.comments.map((comment) => {
                     return (
                     <li className='border-box' key={comment.id}>
                         <div className='row'>
-                            <h5>{comment.user.username}</h5>
-                            <p>{comment.text}   </p>
+                            <div className='col-10'>
+                                <h5>{comment.user.username}</h5>
+                                <p>{comment.text}</p>
+                            </div>
+
+                            <div className='col-2'>
                             {props.user.user_id === comment.user.id
                                 ? <span>
                                     <CommentUpdate comment={comment} updateComment={props.updateComment}/>
@@ -32,13 +36,14 @@ const CommentList = (props) => {
                                 : <span>
                                     <LikeDislikeButton comment={comment} updateComment={props.updateComment} />
                                 </span>}
+                            </div>
 
+                        </div>
                             <span>
                                     <ReplyList user={props.user} comment={comment} deleteReply={props.deleteReply} updateReply={props.updateReply}/>
                                     <ReplyForm comment={comment} addReply={props.addReply}/>
                                 </span>
                         
-                        </div>
        
                     </li>
                     
@@ -52,7 +57,7 @@ const CommentList = (props) => {
     return ( 
         <div>
             <span>
-                <span className='comment-reply-header'>Comments: </span>
+                <span className='comment-reply-header' style={{'marginLeft':'2em'}}>Comments: </span>
             </span>
            <ul>
             {props.comments && props.comments.map((comment) => {
