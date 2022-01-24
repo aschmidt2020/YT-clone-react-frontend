@@ -3,34 +3,34 @@ import VideoPlayer from "../VideoPlayer/VideoPlayer";
 import SearchResults from "../SearchResults/SearchResults";
 
 const HomePage = (props) => {
-    return ( 
+    return (
         <div>
             <div className="row">
                 <div className="col">
-                <ul>
-                    {props.searchResults.map((result, index) => {
-                        if('snippet' in result){
-                            return (
-                            <li key={result.id.videoId} className='homepage-grid'>
-                                <div className="text-center homepage-border"><button className="btn btn-light" onClick={() => props.getVideo(result)} data-toggle='popover' title='Watch' data-content='Watch' trigger='hover'>
-                                    <div className="video-thumbnail">
-                                        <img src={result.snippet.thumbnails.medium.url} />
-                                        <i className="play-button bi bi-play" role='img'></i>
-                                    </div>
-                                    </button>
-                                    <h6 style={{'marginLeft':'0.5em', 'marginBottom':'0.5','textAlign':'left'}}>{result.snippet.title}</h6>
-                                    <p style={{'marginLeft':'0.5em', 'marginBottom':'0.5','textAlign':'left'}}>{result.snippet.description}</p>
-                                </div>
-                            </li>
-                                
-                        )}
+                    <ul>
+                        {props.searchResults.map((result, index) => {
+                            if ("snippet" in result) {
+                                return (
+                                    <li key={result.id.videoId} className="homepage-grid">
+                                        <div className="text-center homepage-border"><button className="btn btn-light" onClick={() => props.getVideo(result)} data-toggle="popover" title="Watch" data-content="Watch" trigger="hover">
+                                            <div className="video-thumbnail">
+                                                <img src={result.snippet.thumbnails.medium.url} />
+                                                <i className="play-button bi bi-play" role="img"></i>
+                                            </div>
+                                        </button>
+                                            <h6 style={{ "marginLeft": "0.5em", "marginBottom": "0.5", "textAlign": "left" }}>{result.snippet.title}</h6>
+                                            <p style={{ "marginLeft": "0.5em", "marginBottom": "0.5", "textAlign": "left" }}>{result.snippet.description}</p>
+                                        </div>
+                                    </li>
+                                )
+                            }
                         }
-                    )}
-                </ul>
+                        )}
+                    </ul>
                 </div>
             </div>
         </div>
-     );
+    );
 }
- 
+
 export default HomePage;
