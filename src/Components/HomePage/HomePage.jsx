@@ -1,7 +1,3 @@
-import SearchBar from "../SearchBar/SearchBar";
-import VideoPlayer from "../VideoPlayer/VideoPlayer";
-import SearchResults from "../SearchResults/SearchResults";
-
 const HomePage = (props) => {
     return (
         <div>

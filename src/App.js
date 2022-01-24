@@ -1,15 +1,11 @@
 import axios from "axios";
-import { Routes, Route, Navigate, useNavigate } from "react-router-dom"
+import { Routes, Route, useNavigate } from "react-router-dom"
 import React, { useState, useEffect } from "react";
-import RelatedVideos from "./Components/RelatedVideos/RelatedVideos";
-import SearchBar from "./Components/SearchBar/SearchBar";
 import SearchResults from "./Components/SearchResults/SearchResults";
 import VideoPlayer from "./Components/VideoPlayer/VideoPlayer";
-import LoginForm from "./Components/LoginForm/LoginForm";
 import NavBar from "./Components/NavBar/NavBar";
 import HomePage from "./Components/HomePage/HomePage";
 import jwt_decode from "jwt-decode";
-import RegistrationForm from "./Components/RegistrationForm/RegistrationForm";
 import "./App.css"
 
 function App() {
