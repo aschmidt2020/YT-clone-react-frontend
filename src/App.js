@@ -26,6 +26,7 @@ function App() {
       setUser(decodedUser);
       getUserInfo(decodedUser, tokenFromStorage);
     } catch { }
+    // eslint-disable-next-line
   }, [])
 
   async function login(username, password) {

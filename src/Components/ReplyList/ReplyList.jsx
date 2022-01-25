@@ -8,6 +8,7 @@ const ReplyList = (props) => {
 
     useEffect(() => {
         getReplies();
+        // eslint-disable-next-line
     }, [props.comment])
 
 

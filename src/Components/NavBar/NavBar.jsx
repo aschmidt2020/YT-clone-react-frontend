@@ -16,7 +16,7 @@ const NavBar = (props) => {
                         <Link to="/" className="navbar-brand" data-toggle="popover" title="Home" data-content="Home" trigger="hover">
                             <div className="row">
                                 <div className="col-4">
-                                    <img src={logo} style={{ "height": "40px", "width": "58px", "marginTop": "0.4em" }} />
+                                    <img src={logo} style={{ "height": "40px", "width": "58px", "marginTop": "0.4em" }} alt="OurTube Logo"/>
                                 </div>
 
                                 <div className="col-8">

@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
-import CommentForm from "../CommentForm/CommentForm";
 import CommentList from "../CommentList/CommentList";
 import RelatedVideos from "../RelatedVideos/RelatedVideos";
-import SearchBar from "../SearchBar/SearchBar";
 
 const VideoPlayer = (props) => {
     const [videoURL, setVideoURL] = useState("");
@@ -20,7 +18,7 @@ const VideoPlayer = (props) => {
             <div className="row">
                 <div className="col-8" style={{ "marginTop": "2em" }}>
                     <div className="ratio ratio-16x9">
-                        <iframe id="ytplayer" type="text/html" width="849" height="478" textalign="center"
+                        <iframe id="ytplayer" title='ytplayer' type="text/html" width="849" height="478" textalign="center"
                             src={videoURL} frameBorder="0" allow="fullscreen"></iframe>
                     </div>
 
