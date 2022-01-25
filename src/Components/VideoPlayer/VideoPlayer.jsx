@@ -17,25 +17,34 @@ const VideoPlayer = (props) => {
         <div className="container">
             <div className="row">
                 <div className="col-8" style={{ "marginTop": "2em" }}>
-                    <div className="ratio ratio-16x9">
-                        <iframe id="ytplayer" title='ytplayer' type="text/html" width="849" height="478" textalign="center"
-                            src={videoURL} frameBorder="0" allow="fullscreen"></iframe>
+                    <div className="row">
+                        <div className="ratio ratio-16x9">
+                            <iframe id="ytplayer" title='ytplayer' type="text/html" width="849" height="478" textalign="center"
+                                src={videoURL} frameBorder="0" allow="fullscreen"></iframe>
+                        </div>
+
+                        {"snippet" in props.video
+                            ? <h3>{props.video.snippet.title}</h3>
+                            : <h3>NO SNIPPET AVAILABLE</h3>
+                        }
+                        {showFullDesc
+                            ? ("snippet" in props.video
+                                ? <p>{props.video.snippet.description}</p>
+                                : <p>NO SNIPPET AVAILABLE</p>)
+                            : ("snippet" in props.video
+                                ? <span>{props.video.snippet.description.substring(0, 100)}...</span>
+                                : <p>NO SNIPPET AVAILABLE</p>
+                            )
+                        }
+                        <span style={{ "marginLeft": "-0.75em" }}><button type="button" className="btn btn-link" onClick={handleDesc}>toggle full description</button></span>
                     </div>
 
-                    {"snippet" in props.video
-                        ? <h3>{props.video.snippet.title}</h3>
-                        : <h3>NO SNIPPET AVAILABLE</h3>
-                    }
-                    {showFullDesc
-                        ? ("snippet" in props.video
-                            ? <p>{props.video.snippet.description}</p>
-                            : <p>NO SNIPPET AVAILABLE</p>)
-                        : ("snippet" in props.video
-                            ? <span>{props.video.snippet.description.substring(0, 100)}...</span>
-                            : <p>NO SNIPPET AVAILABLE</p>
-                        )
-                    }
-                    <span style={{ "marginLeft": "-0.75em" }}><button type="button" className="btn btn-link" onClick={handleDesc}>toggle full description</button></span>
+                    <div className="row">
+                        <CommentList user={props.user} videoId={props.video.id.videoId} addComment={props.addComment}
+                            comments={props.comments} deleteComment={props.deleteComment} updateComment={props.updateComment}
+                            addReply={props.addReply} deleteReply={props.deleteReply} updateReply={props.updateReply} />
+                        
+                    </div>
 
                 </div>
                 <div className="col-4">
@@ -43,11 +52,7 @@ const VideoPlayer = (props) => {
                 </div>
 
             </div>
-            <div className="row" style={{ "marginTop": "2em" }}>
-                <CommentList user={props.user} videoId={props.video.id.videoId} addComment={props.addComment}
-                    comments={props.comments} deleteComment={props.deleteComment} updateComment={props.updateComment}
-                    addReply={props.addReply} deleteReply={props.deleteReply} updateReply={props.updateReply} />
-            </div>
+
         </div>
     );
 
