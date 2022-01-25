@@ -36,12 +36,12 @@ const LikeDislikeButton = (props) => {
 
     return (
         <span>
-            <Button variant="btn btn-outline-secondary" onClick={handleClick} style={{ "marginTop": "1em" }} data-toggle="popover" title="Like" data-content="Like" trigger="hover">
+            <Button variant="btn btn-outline-secondary" onClick={handleClick} data-toggle="popover" title="Like" data-content="Like" trigger="hover">
                 {props.comment.likes > 0 && <span><i className="bi bi-hand-thumbs-up-fill"></i>{props.comment.likes}</span>}
                 {props.comment.likes === 0 && <span>&nbsp;<i className="bi bi-hand-thumbs-up"></i>&nbsp;&nbsp;</span>}
             </Button>
 
-            <Button variant="btn btn-outline-secondary" onClick={handleClickDislike} style={{ "marginTop": "1em", "marginLeft": "1em", "marginRight": "1em" }} data-toggle="popover" title="Dislike" data-content="Dislike" trigger="hover">
+            <Button variant="btn btn-outline-secondary" onClick={handleClickDislike} style={{"marginLeft": "1em"}} data-toggle="popover" title="Dislike" data-content="Dislike" trigger="hover">
                 {props.comment.dislikes > 0 && <span><i className="bi bi-hand-thumbs-down-fill"></i> {props.comment.dislikes}</span>}
                 {props.comment.dislikes === 0 && <span>&nbsp;<i className="bi bi-hand-thumbs-down"></i>&nbsp;&nbsp;</span>}
             </Button>

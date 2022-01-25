@@ -36,7 +36,7 @@ const ReplyList = (props) => {
                                     <li key={reply.id}>
 
                                         <div className="row">
-                                            <div className="col-2">
+                                            <div className="col-4">
                                                 <h5>{reply.user.username}<small className="text-muted fst-italic"> reply</small></h5>
                                                 <p>{reply.text}</p>
                                             </div>
@@ -49,7 +49,7 @@ const ReplyList = (props) => {
                                                     </span>}
                                             </div>
 
-                                            <div className="col-8">
+                                            <div className="col-6">
                                                 {/* empty column for spacing */}
                                             </div>
 

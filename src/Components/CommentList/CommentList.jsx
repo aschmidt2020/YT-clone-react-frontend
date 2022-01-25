@@ -12,7 +12,7 @@ const CommentList = (props) => {
         return (
             <div>
                 <span>
-                    <span className="comment-reply-header" style={{ "marginLeft": "2em" }}>Comments: </span>
+                    <span className="comment-reply-header">Comments: </span>
                     {props.user &&
                         <CommentForm videoId={props.videoId} addComment={props.addComment} />}
                 </span>
@@ -21,12 +21,12 @@ const CommentList = (props) => {
                         return (
                             <li className="border-box" key={comment.id}>
                                 <div className="row">
-                                    <div className="col-10">
+                                    <div className="col-9">
                                         <h5>{comment.user.username}</h5>
                                         <p>{comment.text}</p>
                                     </div>
 
-                                    <div className="col-2">
+                                    <div className="col-3" style={{'marginTop':'1em'}}>
                                         {props.user.user_id === comment.user.id
                                             ? <span>
                                                 <CommentUpdate comment={comment} updateComment={props.updateComment} />
@@ -58,7 +58,7 @@ const CommentList = (props) => {
     return (
         <div>
             <span>
-                <span className="comment-reply-header" style={{ "marginLeft": "2em" }}>Comments: </span>
+                <span className="comment-reply-header">Comments: </span>
             </span>
             <ol>
                 {props.comments && props.comments.map((comment) => {

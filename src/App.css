@@ -22,6 +22,7 @@
     padding-left: 1em;
     border-radius: 1em;
     margin-bottom: 1em;
+    margin-left: 0em;
 }
 
 .btn:focus {
@@ -38,6 +39,8 @@ ol {
     list-style: none;
     display: flex;
     flex-direction: column-reverse;
+    margin-left: -2em;
+    padding-left: 0px;
 }
 
 .related-video-text {
