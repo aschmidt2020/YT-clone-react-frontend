@@ -81,7 +81,7 @@ function App() {
   }
 
   async function pageLoad() {
-    await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=24&q=trending&key=${API_KEY}`)
+    await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=24&q=trending&type=video&key=${API_KEY}`)
       .then(response => {
         setSearchResults(response.data);
         setVideo(response.data.items[0]);
@@ -99,7 +99,7 @@ function App() {
   }
 
   async function universalSearch(searchTerm) {
-    let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${searchTerm}&key=${API_KEY}`);
+    let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${searchTerm}&type=video&key=${API_KEY}`);
     setSearchResults(response.data);
     setVideo(response.data.items[0]);
     navigate("/search");
