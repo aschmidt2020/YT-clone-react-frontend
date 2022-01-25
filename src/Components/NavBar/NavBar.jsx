@@ -7,7 +7,7 @@ import logo from "../Images/YouTubeCloneLogo.png"
 const NavBar = (props) => {
     return (
         <div>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+            <nav className="navbar navbar-expand-md navbar-light bg-light sticky-top">
                 <div className="container-fluid">
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
