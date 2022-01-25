@@ -32,7 +32,7 @@ const ReplyList = (props) => {
                         if (showReplies) {
                             return (
                                 <div>
-                                    <li id={reply.id}>
+                                    <li key={reply.id}>
 
                                         <div className="row">
                                             <div className="col-2">

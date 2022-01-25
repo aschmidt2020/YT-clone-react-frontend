@@ -17,7 +17,6 @@ const LoginForm = (props) => {
   }
 
   function handleSubmit(e) {
-    debugger
     e.preventDefault();
     props.login(username, password);
   }

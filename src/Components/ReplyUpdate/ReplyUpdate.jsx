@@ -15,7 +15,6 @@ const ReplyUpdate = (props) => {
 
   function handleSubmit(event) {
     event.preventDefault();
-    debugger
     let updatedReply = {
       "id": props.reply.id,
       "text": text,

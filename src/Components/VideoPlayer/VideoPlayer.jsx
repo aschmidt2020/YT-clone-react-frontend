@@ -20,7 +20,7 @@ const VideoPlayer = (props) => {
             <div className="row">
                 <div className="col-8" style={{ "marginTop": "2em" }}>
                     <div className="ratio ratio-16x9">
-                        <iframe id="ytplayer" type="text/html" width="849" height="478" textAlign="center"
+                        <iframe id="ytplayer" type="text/html" width="849" height="478" textalign="center"
                             src={videoURL} frameBorder="0" allow="fullscreen"></iframe>
                     </div>
 
