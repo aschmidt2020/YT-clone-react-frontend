@@ -2,7 +2,7 @@ const RelatedVideos = (props) => {
     return (
         <div>
             <h4 style={{ "marginBottom": "-1.5em" }}>Related: </h4>
-            <table className="table table-sm table-striped table-hover text-align-center" style={{ "marginTop": "2em" }}>
+            <table className="table table-sm table-striped text-align-center" style={{ "marginTop": "2em" }}>
                 <thead>
                     <tr>
                         <th></th>

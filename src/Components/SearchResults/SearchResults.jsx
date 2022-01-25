@@ -10,7 +10,7 @@ const SearchResults = (props) => {
 
                 <div className="col-10">
                     <h4 style={{ "marginBottom": "-1.5em" }}>Search Results: </h4>
-                    <table className="table table-sm table-striped table-hover text-align-center" style={{ "marginTop": "2em" }}>
+                    <table className="table table-sm table-striped text-align-center" style={{ "marginTop": "2em" }}>
                         <thead>
                             <tr>
                                 <th></th>
