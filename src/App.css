@@ -45,7 +45,7 @@ ol {
 }
 
 .btn.btn-light:hover {
-    background-color: grey;
+    background-color: rgb(207, 207, 207);
     
 }
 
@@ -95,5 +95,5 @@ ol {
 }
 
 .btn.btn-link {
-    color: grey;
+    color: rgb(207, 207, 207);
 }

@@ -22,7 +22,7 @@ const CommentForm = (props) => {
         <div>
             <form onSubmit={handleSubmit} style={{ "marginBottom": "1em", "marginTop": "0.25em", "marginLeft": "2em" }}>
                 <input type="text" placeholder="Speak your mind..." style={{ "width": "40%" }} value={comment} onChange={(e) => setComment(e.target.value)}></input>
-                <button style={{ "marginTop": "-0.2em", "marginLeft": "0.5em" }} type="submit" className="btn btn-primary">Add Comment</button>
+                <button style={{ "marginTop": "-0.2em", "marginLeft": "0.5em" }} type="submit" className="btn btn-outline-dark">Add Comment</button>
             </form>
         </div>
     );

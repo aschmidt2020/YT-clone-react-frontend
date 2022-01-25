@@ -126,10 +126,10 @@ const RegistrationForm = (props) => {
 
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={resetForm}>
+          <Button variant="btn btn-outline-dark" onClick={resetForm}>
             Close
           </Button>
-          <Button type="submit" variant="primary" onClick={handleSubmit}>
+          <Button type="submit" variant="btn btn-outline-primary" onClick={handleSubmit}>
             Sign Up!
           </Button>
         </Modal.Footer>
