@@ -81,7 +81,7 @@ function App() {
   }
 
   async function pageLoad() {
-    await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=trending&key=${API_KEY}`)
+    await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=24&q=trending&key=${API_KEY}`)
       .then(response => {
         setSearchResults(response.data);
         setVideo(response.data.items[0]);
