@@ -49,7 +49,6 @@ function App() {
   }
 
   async function getUserInfo(user, token) {
-
     await axios({
       method: "get",
       url: `http://127.0.0.1:8000/api/comments/user/${user.user_id}/`,
@@ -73,7 +72,7 @@ function App() {
       headers: {},
       data: userInfo
     }).then(response => {
-      alert("Account created! Please log-in.")
+      login(userInfo.username, userInfo.password)
     }
     ).catch(error => {
       alert("Account creation failed. Please enter all required fields.")

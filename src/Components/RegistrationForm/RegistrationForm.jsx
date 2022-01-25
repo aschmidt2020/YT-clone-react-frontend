@@ -28,16 +28,6 @@ const RegistrationForm = (props) => {
     handleClose();
   }
 
-  // function validateEmail(mail) 
-  //   {
-  //   if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(myForm.emailAddr.value))
-  //     {
-  //       return (true)
-  //     }
-  //       alert("You have entered an invalid email address!")
-  //       return (false)
-  //   }
-
   function handleSubmit(e) {
     debugger
     e.preventDefault();
@@ -60,6 +50,7 @@ const RegistrationForm = (props) => {
       setPassword("");
       setPasswordCheck("");
     }
+
   }
 
   return (
@@ -75,7 +66,7 @@ const RegistrationForm = (props) => {
 
         <Modal.Body>
 
-          <Form onSubmit={handleClose}>
+          <Form onSubmit={handleSubmit}>
             <div className="input-group mb-3">
               <span className="input-group-text">First name</span>
               <input className="form-control" type="text" value={firstName} onChange={(event) => setFirstName(event.target.value)}></input>
