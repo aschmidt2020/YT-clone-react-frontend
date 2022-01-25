@@ -15,6 +15,7 @@ function App() {
   const [video, setVideo] = useState(undefined);
   const [searchResults, setSearchResults] = useState(undefined);
   const [playlist, setPlaylist] = useState(undefined);
+  const [homepage, setHomepage] = useState(undefined);
   const [comments, setComments] = useState([]);
   const [userInfo, setUserInfo] = useState([]);
 
@@ -84,6 +85,7 @@ function App() {
     await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=24&q=trending&type=video&key=${API_KEY}`)
       .then(response => {
         setSearchResults(response.data);
+        setHomepage(response.data);
         setVideo(response.data.items[0]);
         getPlaylist(response.data.items[0]);
       }
@@ -225,13 +227,13 @@ function App() {
     })
   }
 
-  if (video !== undefined && playlist !== undefined && searchResults !== undefined) {
+  if (homepage !== undefined && video !== undefined && playlist !== undefined && searchResults !== undefined) {
     return (
       <div>
         <div className="container">
           <NavBar user={user} userInfo={userInfo} universalSearch={universalSearch} login={login} logout={logout} register={register} />
           <Routes>
-            <Route exact path="/" element={<HomePage userInfo={userInfo} universalSearch={universalSearch} searchResults={searchResults.items} getVideo={getVideo} />} />
+            <Route exact path="/" element={<HomePage userInfo={userInfo} universalSearch={universalSearch} searchResults={homepage.items} getVideo={getVideo} />} />
             <Route path="/video" element={<VideoPlayer user={user}
               comments={comments} deleteComment={deleteComment} updateComment={updateComment} addComment={addComment}
               addReply={addReply} deleteReply={deleteReply} updateReply={updateReply}
