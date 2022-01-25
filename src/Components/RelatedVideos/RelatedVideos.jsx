@@ -14,16 +14,18 @@ const RelatedVideos = (props) => {
                         if ("snippet" in result) {
                             return (
                                 <tr key={result.id.videoId}>
-                                    <td className="text-center"><button className="btn btn-light video-thumbnail-small" onClick={() => props.getVideo(result)} data-toggle="popover" title="Watch" data-content="Watch" trigger="hover">
-                                        <div>
-                                            <img src={result.snippet.thumbnails.default.url} className="img-fluid" alt={result.snippet.title}/>
-                                            <i className="play-button-small bi bi-play" role="img"></i>
-                                        </div>
-                                    </button></td>
-                                    <td>
-                                        <h6 style={{ "marginBottom": "0" }}>{result.snippet.title}</h6>
-                                        <p className="related-video-text">{result.snippet.description.substring(0, 100)}</p>
-                                    </td>
+                                    <button className="btn bg-transparent" onClick={() => props.getVideo(result)}>
+                                        <td className="text-center"><button className="btn btn-light video-thumbnail-small" onClick={() => props.getVideo(result)} data-toggle="popover" title="Watch" data-content="Watch" trigger="hover">
+                                            <div>
+                                                <img src={result.snippet.thumbnails.default.url} className="img-fluid" alt={result.snippet.title}/>
+                                                <i className="play-button-small bi bi-play" role="img"></i>
+                                            </div>
+                                        </button></td>
+                                        <td>
+                                            <h6 style={{ "marginBottom": "0" }}>{result.snippet.title}</h6>
+                                            <p className="related-video-text">{result.snippet.description.substring(0, 100)}</p>
+                                        </td>
+                                    </button>
                                 </tr>
                             )
                         }

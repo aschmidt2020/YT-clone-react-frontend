@@ -22,18 +22,20 @@ const SearchResults = (props) => {
                                 if ("snippet" in result) {
                                     return (
                                         <tr key={result.id.videoId}>
-                                            <td className="text-center"><button className="btn btn-light video-thumbnail" onClick={() => props.getVideo(result)} data-toggle="popover" title="Watch" data-content="Watch" trigger="hover">
-                                                <div>
-                                                    <img src={result.snippet.thumbnails.medium.url} className="img-fluid" alt={result.snippet.title}/>
-                                                    <i className="play-button-search bi bi-play" role="img"></i>
-                                                </div>
-                                            </button></td>
-                                            <td>
-                                                <h5 style={{ "marginBottom": "0" }}>{result.snippet.title}</h5>
-                                                <p>{result.snippet.description}</p>
-                                                <p><small>Channel: {result.snippet.channelTitle}</small></p>
-                                                <p><small>Published: {result.snippet.publishedAt}</small></p>
-                                            </td>
+                                            <button className="btn bg-transparent" onClick={() => props.getVideo(result)}>
+                                                <td className="text-center"><button className="btn btn-light video-thumbnail" onClick={() => props.getVideo(result)} data-toggle="popover" title="Watch" data-content="Watch" trigger="hover">
+                                                    <div>
+                                                        <img src={result.snippet.thumbnails.medium.url} className="img-fluid" alt={result.snippet.title}/>
+                                                        <i className="play-button-search bi bi-play" role="img"></i>
+                                                    </div>
+                                                </button></td>
+                                                <td>
+                                                    <h5 style={{ "marginBottom": "0" }}>{result.snippet.title}</h5>
+                                                    <p>{result.snippet.description}</p>
+                                                    <p><small>Channel: {result.snippet.channelTitle}</small></p>
+                                                    <p><small>Published: {result.snippet.publishedAt}</small></p>
+                                                </td>
+                                            </button>
                                         </tr>
 
                                     )
