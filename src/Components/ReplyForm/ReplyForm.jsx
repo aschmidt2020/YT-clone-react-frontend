@@ -19,7 +19,7 @@ const ReplyForm = (props) => {
         <div>
             <form onSubmit={handleSubmit} style={{ "marginTop": "1em" }}>
                 <input type="text" placeholder="Reply..." value={reply} onChange={(e) => setReply(e.target.value)}></input>
-                <button style={{ "marginTop": "-0.2em", "marginLeft": "0.5em" }} type="submit" className="btn btn-outline-dark">Add Reply</button>
+                <button style={{ "marginTop": "-0.2em", "marginLeft": "0.5em" }} type="submit" className="btn btn-outline-dark">Reply</button>
             </form>
         </div>
     );
