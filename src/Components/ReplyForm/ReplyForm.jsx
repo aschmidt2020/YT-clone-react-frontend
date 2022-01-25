@@ -6,7 +6,6 @@ const ReplyForm = (props) => {
 
     function handleSubmit(e) {
         e.preventDefault();
-        debugger
         let replyPost = {
             "text": reply,
             "comment": props.comment.id

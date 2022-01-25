@@ -15,7 +15,6 @@ const CommentUpdate = (props) => {
 
   function handleSubmit(event) {
     event.preventDefault();
-    debugger
     let updatedComment = {
       "id": props.comment.id,
       "video_id": props.comment.video_id,

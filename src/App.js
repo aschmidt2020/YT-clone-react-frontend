@@ -26,10 +26,10 @@ function App() {
       setUser(decodedUser);
       getUserInfo(decodedUser, tokenFromStorage);
     } catch { }
+    // eslint-disable-next-line
   }, [])
 
   async function login(username, password) {
-    debugger
     await axios({
       method: "post",
       url: "http://127.0.0.1:8000/api/auth/login/",
@@ -61,7 +61,6 @@ function App() {
   }
 
   async function logout() {
-    debugger
     localStorage.removeItem("token");
     window.location = "/";
   }
@@ -112,12 +111,10 @@ function App() {
   }
 
   function getVideo(video) {
-    debugger
     setVideo(video);
     getPlaylist(video);
     getComments(video);
     navigate("/video");
-    debugger
   }
 
   async function addComment(postRequest) {
@@ -158,9 +155,7 @@ function App() {
   }
 
   async function updateComment(comment) {
-
     const jwt = localStorage.getItem("token");
-    debugger
     await axios({
       method: "put",
       url: `http://127.0.0.1:8000/api/comments/editcomment/${comment.id}/`,
@@ -215,7 +210,6 @@ function App() {
 
   async function updateReply(reply) {
     const jwt = localStorage.getItem("token");
-    debugger
     await axios({
       method: "put",
       url: `http://127.0.0.1:8000/api/comments/editreply/${reply.id}/`,

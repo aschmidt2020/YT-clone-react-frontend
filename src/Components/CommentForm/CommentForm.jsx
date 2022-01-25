@@ -13,7 +13,6 @@ const CommentForm = (props) => {
             "dislikes": 0
         }
 
-        debugger
         props.addComment(commentPost);
         setComment("");
     }

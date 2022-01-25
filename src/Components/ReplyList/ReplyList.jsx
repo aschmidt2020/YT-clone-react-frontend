@@ -8,6 +8,7 @@ const ReplyList = (props) => {
 
     useEffect(() => {
         getReplies();
+        // eslint-disable-next-line
     }, [props.comment])
 
 
@@ -32,7 +33,7 @@ const ReplyList = (props) => {
                         if (showReplies) {
                             return (
                                 <div>
-                                    <li id={reply.id}>
+                                    <li key={reply.id}>
 
                                         <div className="row">
                                             <div className="col-2">

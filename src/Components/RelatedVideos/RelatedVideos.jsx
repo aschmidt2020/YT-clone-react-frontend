@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-
 const RelatedVideos = (props) => {
     return (
         <div>
@@ -18,7 +16,7 @@ const RelatedVideos = (props) => {
                                 <tr key={result.id.videoId}>
                                     <td className="text-center"><button className="btn btn-light video-thumbnail-small" onClick={() => props.getVideo(result)} data-toggle="popover" title="Watch" data-content="Watch" trigger="hover">
                                         <div>
-                                            <img src={result.snippet.thumbnails.default.url} className="img-fluid" />
+                                            <img src={result.snippet.thumbnails.default.url} className="img-fluid" alt={result.snippet.title}/>
                                             <i className="play-button-small bi bi-play" role="img"></i>
                                         </div>
                                     </button></td>
