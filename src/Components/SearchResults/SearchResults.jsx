@@ -24,10 +24,10 @@ const SearchResults = (props) => {
                                 if ("snippet" in result) {
                                     return (
                                         <tr key={result.id.videoId}>
-                                            <td className="text-center"><button className="btn btn-light" onClick={() => props.getVideo(result)} data-toggle="popover" title="Watch" data-content="Watch" trigger="hover">
-                                                <div className="video-thumbnail">
+                                            <td className="text-center"><button className="btn btn-light video-thumbnail" onClick={() => props.getVideo(result)} data-toggle="popover" title="Watch" data-content="Watch" trigger="hover">
+                                                <div>
                                                     <img src={result.snippet.thumbnails.medium.url} className="img-fluid"/>
-                                                    <i className="play-button bi bi-play" role="img"></i>
+                                                    <i className="play-button-search bi bi-play" role="img"></i>
                                                 </div>
                                             </button></td>
                                             <td>

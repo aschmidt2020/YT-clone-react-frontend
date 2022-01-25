@@ -16,8 +16,8 @@ const RelatedVideos = (props) => {
                         if ("snippet" in result) {
                             return (
                                 <tr key={result.id.videoId}>
-                                    <td className="text-center"><button className="btn btn-light" onClick={() => props.getVideo(result)} data-toggle="popover" title="Watch" data-content="Watch" trigger="hover">
-                                        <div className="video-thumbnail-small">
+                                    <td className="text-center"><button className="btn btn-light video-thumbnail-small" onClick={() => props.getVideo(result)} data-toggle="popover" title="Watch" data-content="Watch" trigger="hover">
+                                        <div>
                                             <img src={result.snippet.thumbnails.default.url} className="img-fluid"/>
                                             <i className="play-button-small bi bi-play" role="img"></i>
                                         </div>

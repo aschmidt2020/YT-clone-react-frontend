@@ -54,7 +54,16 @@ ol {
     display: block;
 }
 
-.play-button {
+.play-button-search {
+    left: 40%;
+    top: 15%;
+    position: absolute;
+    font-size:4em;
+    color:#f9f9f9;
+
+}
+
+.play-button-homepage {
     left: 40%;
     top: 25%;
     position: absolute;
@@ -63,7 +72,7 @@ ol {
 
 }
 
-.play-button:hover {
+.play-button-search:hover, .play-button-homepage:hover {
     color: red;
 }
 
@@ -73,8 +82,8 @@ ol {
 }
 
 .play-button-small {
-    left: 40%;
-    top: 25%;
+    left: 30%;
+    top: 5%;
     position: absolute;
     font-size:2em;
     color:#f9f9f9;
