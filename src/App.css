@@ -40,15 +40,6 @@ ol {
     flex-direction: column-reverse;
 }
 
-ul {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 100%;
-    padding-left: 0;
-    flex: 1 1 0
-}
-
 .related-video-text {
     font-size: small;
 }
@@ -96,21 +87,4 @@ ul {
 
 .btn.btn-link {
     color: grey;
-}
-
-.homepage-grid {
-    list-style: none;
-    display: inline-block;
-    width: calc(100% / 3);
-    text-align: center;
-    flex: 1 1 0;
-}
-
-.homepage-border {
-    margin: 1em;
-    border: 1px;
-    border-style: solid;
-    border-color: black;
-    border-radius: 1em;
-    background-color: #f9f9f9;
 }
