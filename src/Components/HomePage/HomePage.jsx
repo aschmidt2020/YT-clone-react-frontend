@@ -12,7 +12,7 @@ const HomePage = (props) => {
                                     <li key={result.id.videoId} className="homepage-grid homepage-border">
                                         <div className="text-center"><button className="btn btn-light" onClick={() => props.getVideo(result)} data-toggle="popover" title="Watch" data-content="Watch" trigger="hover">
                                             <div className="video-thumbnail">
-                                                <img src={result.snippet.thumbnails.medium.url} />
+                                                <img src={result.snippet.thumbnails.medium.url} className="img-fluid"/>
                                                 <i className="play-button bi bi-play" role="img"></i>
                                             </div>
                                         </button>

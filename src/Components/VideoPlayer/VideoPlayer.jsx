@@ -19,8 +19,11 @@ const VideoPlayer = (props) => {
         <div className="container">
             <div className="row">
                 <div className="col-8" style={{ "marginTop": "2em" }}>
-                    <iframe id="ytplayer" type="text/html" width="849" height="478" textAlign="center"
-                        src={videoURL} frameBorder="0"></iframe>
+                    <div className="ratio ratio-16x9">
+                        <iframe id="ytplayer" type="text/html" width="849" height="478" textAlign="center"
+                            src={videoURL} frameBorder="0" ></iframe>
+                    </div>
+
                     {"snippet" in props.video
                         ? <h3>{props.video.snippet.title}</h3>
                         : <h3>NO SNIPPET AVAILABLE</h3>
