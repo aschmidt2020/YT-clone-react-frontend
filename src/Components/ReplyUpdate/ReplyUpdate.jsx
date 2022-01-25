@@ -28,7 +28,7 @@ const ReplyUpdate = (props) => {
 
   return (
     <span>
-      <Button variant="btn btn-outline-secondary" style={{ "marginTop": "1em" }} onClick={handleShow} data-toggle="popover" title="Edit reply" data-content="Edit reply" trigger="hover">
+      <Button variant="btn btn-outline-dark" style={{ "marginTop": "1em" }} onClick={handleShow} data-toggle="popover" title="Edit reply" data-content="Edit reply" trigger="hover">
         <i className="bi bi-pen"></i>
       </Button>
 
