@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
-import CommentForm from "../CommentForm/CommentForm";
 import CommentList from "../CommentList/CommentList";
 import RelatedVideos from "../RelatedVideos/RelatedVideos";
-import SearchBar from "../SearchBar/SearchBar";
 
 const VideoPlayer = (props) => {
     const [videoURL, setVideoURL] = useState("");

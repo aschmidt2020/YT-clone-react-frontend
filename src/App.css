@@ -97,3 +97,18 @@ ol {
 .btn.btn-link {
     color: rgb(207, 207, 207);
 }
+
+button.btn.btn-outline-dark:hover {
+    background-color: rgb(207, 207, 207);
+    color: black;
+}
+
+button.btn.btn-outline-danger:hover {
+    background-color: #dc35462f;
+    color: #dc3545;
+}
+
+button.btn.btn-outline-primary:hover {
+    background-color: #0d6dfd28;
+    color: #0d6efd;
+}

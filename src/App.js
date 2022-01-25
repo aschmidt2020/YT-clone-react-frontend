@@ -95,7 +95,7 @@ function App() {
 
   async function getPlaylist(video) {
     let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=${video.id.videoId}&type=video&key=${API_KEY}`);
-    console.log(response);
+    /* console.log(response); */
     setPlaylist(response.data);
   }
 

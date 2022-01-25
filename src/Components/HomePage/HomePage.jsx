@@ -1,18 +1,18 @@
-import './HomePage.css'
+import "./HomePage.css"
 
 const HomePage = (props) => {
     return (
         <div>
             <div className="row">
                 <div className="col">
-                    <ul className='ul-container'>
+                    <ul className="ul-container">
                         {props.searchResults.map((result, index) => {
                             if ("snippet" in result) {
                                 return (
                                     <li key={result.id.videoId} className="homepage-grid homepage-border">
                                         <div className="text-center"><button className="btn btn-light" onClick={() => props.getVideo(result)} data-toggle="popover" title="Watch" data-content="Watch" trigger="hover">
                                             <div className="video-thumbnail">
-                                                <img src={result.snippet.thumbnails.medium.url} className="img-fluid"/>
+                                                <img src={result.snippet.thumbnails.medium.url} className="img-fluid" />
                                                 <i className="play-button-homepage bi bi-play" role="img"></i>
                                             </div>
                                         </button>

@@ -48,10 +48,10 @@ const LoginForm = (props) => {
 
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="btn btn-outline-dark" onClick={handleClose}>
             Close
           </Button>
-          <Button type="submit" variant="primary" onClick={handleSubmit}>
+          <Button type="submit" variant="btn btn-outline-primary" onClick={handleSubmit}>
             Log In
           </Button>
         </Modal.Footer>
