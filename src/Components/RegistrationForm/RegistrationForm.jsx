@@ -64,7 +64,7 @@ const RegistrationForm = (props) => {
 
   return (
     <span id="sign-up">
-      <Button variant="btn btn-outline-secondary" onClick={handleShow} style={{ "marginLeft": "1em" }}>
+      <Button variant="btn btn-outline-dark" onClick={handleShow} style={{ "marginLeft": "1em" }}>
         Register
       </Button>
 

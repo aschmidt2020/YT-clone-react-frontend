@@ -1,11 +1,11 @@
-import './HomePage.css'
+import "./HomePage.css"
 
 const HomePage = (props) => {
     return (
         <div>
             <div className="row">
                 <div className="col">
-                    <ul className='ul-container'>
+                    <ul className="ul-container">
                         {props.searchResults.map((result, index) => {
                             if ("snippet" in result) {
                                 return (
