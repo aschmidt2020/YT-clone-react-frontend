@@ -3,12 +3,12 @@ services:
   prod-web:
     container_name: youtube-clone-frontend
     image: audreyyyschmidt/ytc-frontend-prod
-    build:
-      context: .
-      dockerfile: Dockerfile
-    volumes:
-      - './:/app'
-      - '/app/node_modules'
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
+    # volumes:
+    #   - './:/app'
+    #   - '/app/node_modules'
     ports:
       - '80:80'
-      - '8081:80'
+      # - '8081:80'
