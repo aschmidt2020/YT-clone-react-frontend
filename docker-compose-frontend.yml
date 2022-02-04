@@ -2,6 +2,7 @@ version: '3.9'
 services:
   prod-web:
     container_name: youtube-clone-frontend
+    image: audreyyyschmidt/ytc-frontend-prod
     build:
       context: .
       dockerfile: Dockerfile
